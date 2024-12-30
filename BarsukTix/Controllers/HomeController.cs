@@ -18,10 +18,49 @@ namespace BarsukTix.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [Route("About")]
+        public IActionResult About()
         {
             return View();
         }
+
+        [Route("Contact")]
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        [Route("Venue")]
+        public IActionResult Venue()
+        {
+            return View();
+        }
+
+        [Route("Buy")]
+        public IActionResult Buy()
+        {
+            return View();
+        }
+
+		[Route("buyer")]
+		public IActionResult Buyer()
+		{
+			return View();
+		}
+
+		[Route("Ticket")]
+		public IActionResult Ticket()
+		{
+			return View();
+		}
+
+
+		[Route("zzFullTestPage")]
+        public IActionResult zzFullTestPage()
+        {
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
