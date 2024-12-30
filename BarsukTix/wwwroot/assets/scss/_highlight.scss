@@ -1,0 +1,174 @@
+
+// ======================== Highlights-1 ==========================>>>>
+.highlight-section{
+    --#{$prefix}highlights-bg: #f5f5f5;
+    --#{$prefix}highlights-border-color: rgba(104, 102, 102, 0.30);
+    .ellipse-image-1{
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-left: -40px;
+        margin-top: 15px;
+        animation: move-y 4s infinite  alternate;
+    }
+}
+
+.highlight-1{    
+    --bg-parallax-image: url(../images/home-1/highlights-item-bg.png);    
+    --bg-parallax-opacity: 1;
+    background-color: var(--#{$prefix}highlights-bg);
+    .text-wrapper,.highlights-text{
+        position: relative;
+    }
+}
+
+.highlights-item{
+    border: 2px solid var(--#{$prefix}highlights-border-color);
+    border-radius: 30px;
+
+    transition: background-image 0.3s ease-in-out;
+    height: 300px;
+    margin: 2px 0;
+    h2{
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        max-width: 300px;
+        transition: $transition-base;
+    }
+    &:hover,&.active{
+        background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="466" height="334" viewBox="0 0 466 334" fill="none"><g filter="url(#filter0_bd_2322_700)"><path d="M15 48C15 31.4315 28.4315 18 45 18H405C421.569 18 435 31.4315 435 48V196C435 212.569 421.569 226 405 226H400.5H399.5C374.647 226 354.5 246.147 354.5 271V276C354.5 292.569 341.069 306 324.5 306H45C28.4315 306 15 292.569 15 276V48Z" fill="#261F30" fill-opacity="0.1" shape-rendering="crispEdges"/><path d="M45 17C27.8792 17 14 30.8792 14 48V276C14 293.121 27.8792 307 45 307H324.5C341.621 307 355.5 293.121 355.5 276V271C355.5 246.699 375.199 227 399.5 227H400.5H405C422.121 227 436 213.121 436 196V48C436 30.8792 422.121 17 405 17H45Z" stroke="white" stroke-opacity="0.1" stroke-width="2" shape-rendering="crispEdges"/></g><defs><filter id="filter0_bd_2322_700" x="-27" y="-24" width="504" height="372" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feGaussianBlur in="BackgroundImageFix" stdDeviation="20"/><feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_2322_700"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dx="8" dy="5"/><feGaussianBlur stdDeviation="10.5"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.39 0"/>    <feBlend mode="normal" in2="effect1_backgroundBlur_2322_700" result="effect2_dropShadow_2322_700"/><feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_2322_700" result="shape"/></filter></defs></svg>');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        h2{
+            color: #d2d2d2;
+        }
+    }
+    @include media-breakpoint-down(lg) {
+        height: 280px;
+    } 
+    @include media-breakpoint-down(md) {
+        max-width: 375px;
+        height: 260px;
+    }     
+}
+
+.highlights-item-2{
+    border: 2px solid var(--#{$prefix}highlights-border-color);
+    border-radius: 30px;
+    transition: all 0.3s;    
+    height: 300px;
+    max-width: 420px;
+    h2{
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        max-width: 300px;
+        transition: all 0.3s ease-in-out; 
+    }
+    .highlights-arrow{
+        position: absolute;
+        bottom: 6px;
+        right: 6px;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.3s;
+        @include media-breakpoint-down(sm) {
+            right: auto;
+            left: 32px;
+            bottom: 60px;
+            .ticket-arrow{
+                width: 46px;
+                height: 46px;
+            }
+        }
+    }    
+    
+    &.active{
+        background-size: auto ;
+        background-position: center center ;
+        background-repeat: no-repeat ;
+        background-image: url(../images/highlights-2.png); 
+        border-color: transparent;
+        @include media-breakpoint-down(sm) {
+            background-size: contain;
+        }
+        .highlights-arrow{
+            visibility: visible;
+            opacity: 1;
+        }
+    } 
+    &.highlight-2-items-hover{
+        &:hover{
+            background-size: auto ;
+            background-position: center center ;
+            background-repeat: no-repeat ;
+            background-image: url(../images/highlights-2.png); 
+            border-color: transparent;
+            .highlights-arrow{
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }      
+    @include media-breakpoint-down(sm) {
+        .highlights-icon{
+            margin-top: 10px;
+            img{
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }      
+}
+
+// ======================== Highlights-1 ==========================>>>>
+
+
+// ======================== Highlights-3 ==========================>>>>
+.highlights-item-3{
+    border: 2px solid var(--#{$prefix}highlights-border-color);
+    border-radius: 30px;
+    transition: $transition-base;
+    h3{
+        transition: $transition-base;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        padding-bottom: 2px;
+    }
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px; 
+        h3{
+            color: var(--#{$prefix}primary);
+        }       
+    }        
+    p{
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+}
+.highlights-icon-style-1{
+    svg{
+        fill: var(--#{$prefix}primary);
+    }   
+}
+.highlights-link{
+    .arrow-up-short{
+        svg{
+            fill: var(--#{$prefix}primary);
+        } 
+    }       
+}
+// ======================== Highlights-3 ==========================>>>>
+
+
+.swiper.highlight-swiper-overflow{
+    overflow: visible;
+}

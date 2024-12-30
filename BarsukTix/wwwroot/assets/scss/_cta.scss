@@ -1,0 +1,143 @@
+.dark-wrapper-bg{
+    --#{$prefix}dark-wrapper-bg: #28303F;
+    padding: 100px 50px;
+    border-radius: 30px;
+    background-color: var(--#{$prefix}dark-wrapper-bg);
+    max-width: 1420px;
+    width: 100%;
+    margin: 0 auto;
+    .cta-text{
+        color: var(--#{$prefix}white) !important;
+    }
+    .arrow-up-right-big{
+        svg{
+            fill: var(--#{$prefix}primary);
+            stroke: var(--#{$prefix}primary);
+        }
+        
+        &.arrow-big-style-2{
+            svg{
+                fill: var(--#{$prefix}secondary);
+                stroke: var(--#{$prefix}secondary);
+            }
+        }
+    }
+    .countdown-label{
+        color: var(--#{$prefix}white);
+    }
+    .cta-percent-off{
+        margin-left: -10px;
+    }   
+}
+
+@media screen and (max-width: 575px){
+    .dark-wrapper-bg{
+        width: calc(100vw - 20px);
+        padding: 20px 8px;
+        .countdown-number {
+            font-size: 48px;
+        }
+        .countdown-label {
+            font-size: 20px;
+        }
+    }
+}
+@media screen and (min-width: 991.9px) and (max-width: 1199.9px){
+    .cta-text.display-3{
+        font-size: 45px;
+    }
+}
+
+@media screen and (min-width: 575px) and (max-width: 767px){
+    .dark-wrapper-bg{
+        max-width: 520px;
+        padding: 30px 20px;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 991px){
+    .dark-wrapper-bg{
+        max-width: 720px;
+        padding: 30px 20px;
+    }
+}
+
+@media screen and (min-width: 991px) and (max-width: 1150px){
+    .dark-wrapper-bg{
+        max-width: 950px;
+        padding: 50px 20px;
+    }
+}
+@media screen and (min-width: 1151px) and (max-width: 1249px){
+    .dark-wrapper-bg{
+        max-width: 1140px;
+        padding: 60px 20px;
+    }
+}
+@media screen and (min-width: 1250px) and (max-width: 1355px){
+    .dark-wrapper-bg{
+        max-width: 1230px;
+        padding: 70px 20px;
+    }
+}
+@media screen and (min-width: 1356px) and (max-width: 1450px){
+    .dark-wrapper-bg{
+        max-width: 1330px;
+        padding: 80px 20px;
+    }
+}
+
+
+.cta-1{
+    .cta-text{
+        max-width: 500px;
+    }
+    .dark-wrapper-bg{
+        .odometer-auto-theme,.cta-percent,.cta-off{
+            font-family: var(--#{$prefix}font-family-style-4); 
+        }
+        .odometer-auto-theme{
+            .odometer-digit:last-child{
+                padding: 0 10px 0 0;
+                margin-left: -10px;
+                @include media-breakpoint-down(lg) {
+                    padding: 0 5px 0 0;  
+                    margin-left: -7px;
+                }
+            }
+        }
+    }
+}
+
+.cta-percent{
+    --#{$prefix}cta-percent-font-size: 100px;
+    line-height: 1;
+    font-size: var(--#{$prefix}cta-percent-font-size);
+    @include media-breakpoint-down(xxl) {
+        --#{$prefix}cta-percent-font-size: 75px;
+    }
+    @include media-breakpoint-down(xl) {
+        --#{$prefix}cta-percent-font-size: 70px;
+    }    
+    @include media-breakpoint-down(lg) {
+        --#{$prefix}cta-percent-font-size: 50px;        
+    }    
+}
+
+.cta-off{
+    --#{$prefix}cta-off-font-size: 60px;
+    --#{$prefix}cta-off-bottom-spacing: 10px;
+    font-size: var(--#{$prefix}cta-off-font-size); 
+    line-height: 1;
+    position: relative;
+    bottom: var(--#{$prefix}cta-off-bottom-spacing);
+    @include media-breakpoint-down(xxl) {
+        --#{$prefix}cta-off-font-size: 54px;
+    }
+    @include media-breakpoint-down(xl) {
+        --#{$prefix}cta-off-font-size: 50px;
+    }    
+    @include media-breakpoint-down(lg) {
+        --#{$prefix}cta-off-font-size: 30px;
+        --#{$prefix}cta-off-bottom-spacing: 5px;
+    }
+}

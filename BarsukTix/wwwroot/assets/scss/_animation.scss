@@ -1,0 +1,147 @@
+
+
+
+@keyframes rotateText {
+    0%{
+        transform: rotate(-360deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+
+//   ======= Ellipse-Image-Animation
+@keyframes move-y {
+    0% { 
+        transform: translateY(0); 
+    }
+    100% { 
+        transform: translateY(-50px);
+    }
+}
+
+@keyframes move-x {
+    0% { 
+        transform: translateX(0); 
+    }
+    100% { 
+        transform: translateX(-30px);
+    }
+}
+//   ======= Ellipse-Image-Animation
+
+
+
+//   ======= Scroll-Section-Animation
+@keyframes textMove {
+    from {
+        left: 0;
+    }
+    to {
+        left: -200px;
+    }
+}
+//   ======= Scroll-Section-Animation
+
+
+
+//=======================================================Update
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+    80% {
+        transform: scaleY(1.1)
+    }
+    100% {
+        transform: scaleY(1)
+    }
+}
+//=======================================================Update
+
+
+
+// =======Preloader
+@keyframes loadingAnimation {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.3);
+    }
+  }
+
+// =======Preloader
+
+
+
+// =======Home-7-Star-Icon-Animation
+@keyframes clock-rotation {
+    0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    }
+    100% {
+            -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+    }
+}
+
+@keyframes anti-clock-rotation {
+    0% {
+            -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+    }
+    100% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    }
+}
+// =======Home-7-Star-Icon-Animation
+
+
+// =======Scroll-Animation
+@keyframes scroll-animation {
+    0% { 
+        left: 0; 
+    }
+    100% { 
+        left: -100%; 
+    }
+}
+// =======Scroll-Animation
+
+
+// =======landing-Pricing-Image-Animation
+@keyframes landing-image-floating {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-25px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+// =======Landing-Pricing-Image-Animation
+
+
+
+// =======Progress-Animation
+
+@keyframes progressAnimation {
+    0%   { width: 5%; background-color: var(--progress-bg);}
+    100% { width: 73%; background-color: var(--progress-bg);}
+}  
+@keyframes progressAnimation-1 {
+    0%   { width: 5%; background-color: var(--progress-bg);}
+    100% { width: 85%; background-color: var(--progress-bg);}
+}
+@keyframes progressAnimation-2 {
+    0%   { width: 5%; background-color: var(--progress-bg);}
+    100% { width: 90%; background-color: var(--progress-bg);}
+}
+// =======Progress-Animation

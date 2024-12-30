@@ -1,0 +1,65 @@
+// ============================Spacers
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 2,
+  10: $spacer * .625,
+  15: $spacer * .9375,
+  20: $spacer * 1.25,
+  30: $spacer * 1.875,
+  40: $spacer * 2.5,
+  50: $spacer * 3.125,  
+  60: $spacer * 3.75,
+  70: $spacer * 4.375,
+  80: $spacer * 5,
+  90: $spacer * 5.625,
+  100: $spacer * 6.25,
+  120: $spacer * 7.5,
+  130: $spacer * 8.125,
+  140: $spacer * 8.75,
+  150: $spacer * 9.375,
+  180: $spacer * 11.25,
+  200: $spacer * 12.5,
+  220: $spacer * 13.75,
+  230: $spacer * 14.375,
+  250: $spacer * 15.625,
+  300: $spacer * 18.75
+);
+// $primary: #B20D5D;
+$form-switch-checked-bg-image : linear-gradient(276deg, var(--bs-primary) 0%, var(--bs-secondary) 100%);
+// Colors
+
+$gray-900: #04000A;  // $dark=$gray-900 (variables-308)
+
+// Typography
+$font-family-sans-serif:  'Open Sans', 'Roboto', 'Plus Jakarta Sans', 'Poppins' , sans-serif;
+$headings-font-family:    'Open Sans' , sans-serif;
+
+// ==============Font Sizes
+$font-size-base: 1rem;
+
+ 
+$h1-font-size:                $font-size-base * 2.1875; //35px
+$h2-font-size:                $font-size-base * 1.875; //30px
+$h3-font-size:                $font-size-base * 1.5; //24px
+$h4-font-size:                $font-size-base * 1.25; //20px
+$h5-font-size:                $font-size-base * 1.125; //18px
+$h6-font-size:                $font-size-base; //16px
+
+$display-font-sizes: (
+  1: 5rem, //80px
+  2: 4.5rem, //72px
+  3: 3.75rem, //60px
+  4: 3.5rem, //56px
+  5: 3rem, //48px
+  6: 2.625rem  //42px
+);
+
+$lead-font-size:              $font-size-base * 1.25;
+$lead-font-weight:            400; 
+
+$enable-negative-margins:     true;

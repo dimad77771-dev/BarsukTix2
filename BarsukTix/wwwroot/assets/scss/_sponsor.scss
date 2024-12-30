@@ -1,0 +1,78 @@
+
+// ======================== Sponsor-1 ==========================>>>>
+.sponsor-1{       
+    .ellipse-image-1{
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        margin-left: -80px;
+        margin-top: -15px;
+        animation: move-y 4s infinite alternate;
+        @include media-breakpoint-down(lg) {
+            left: auto;
+            right: 0;  
+        } 
+    }
+}
+// ======================== Sponsor-1 ==========================>>>>
+
+
+.sponsors-type{
+    position: relative;
+    left: 25px;
+    &::before{
+        content: "";
+        position: absolute;
+        width: 3px;
+        height: 100%;
+        background: var(--#{$prefix}primary);
+        left: -25px;
+    }
+    &.sponsors-type-style-2{
+        &::before{            
+            background: var(--#{$prefix}secondary);            
+        }
+    }
+}
+
+.sponsor-wrapper{
+    --#{$prefix}border-color:rgba(104, 102, 102, 0.30);
+    border: 2px solid var(--#{$prefix}border-color);
+    border-radius: 10px;
+    width: 264px;
+    height: 80px;
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    overflow: hidden;
+    @include media-breakpoint-down(xxl) {        
+        width: 225px;
+        height: 68px;
+    }
+    @include media-breakpoint-down(xl) {
+        width: 188px;
+        height: 70px;
+    }
+    @include media-breakpoint-down(md) {
+        width: 160px;
+        height: 60px;
+        img{
+            max-width: 142px;
+        }
+    }
+}
+
+.brand-image {
+    padding: 2px 0;
+    img{        
+        @include media-breakpoint-down(md) {
+            max-width: 140px;
+        }
+        @include media-breakpoint-down(sm) {
+            max-width: 130px;
+        }
+    }    
+}

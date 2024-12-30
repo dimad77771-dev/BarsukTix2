@@ -1,0 +1,110 @@
+
+
+// ======================== Subscription-1 ==========================>>>>
+.subscription-1{
+    .ellipse-image-2{
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: -60px;
+        margin-right: -80px;
+        z-index: -1;
+        animation: move-y 4s infinite  alternate;
+        @include media-breakpoint-down(md) {
+            margin-top: -60px;
+            margin-right: -10px;  
+        }
+    }
+}
+
+.subscription-form {
+    --#{$prefix}subscription-border-color: rgba(0, 0, 0, 0.1);
+    --#{$prefix}subscription-placeholder-color: rgba(0, 0, 0, 0.25);
+
+    transition: $transition-base;
+    .form-control{
+        --#{$prefix}border-radius: 20px;
+        border: 2px solid var(--#{$prefix}subscription-border-color);
+        padding: 1.5rem 1rem;
+        @include media-breakpoint-down(md) {
+            padding: 0.75rem;
+        }
+        &::placeholder{
+            color: var(--#{$prefix}subscription-placeholder-color);
+            font-family: var(--#{$prefix}font-family-style-2);
+            font-size: 22px;
+            font-weight: 400; 
+            @include media-breakpoint-down(lg) {
+                font-size: 18px;
+            }
+        }
+        &:focus{
+            box-shadow: none;
+            border: 2px solid var(--#{$prefix}primary);
+            & + .subscription-form-arrow{
+                color: var(--#{$prefix}primary);                
+            }
+        }
+    }
+    .subscription-form-arrow{
+        --#{$prefix}subscription-arrow-top-spacing: 18px;
+        --#{$prefix}subscription-arrow-right-spacing: 25px;
+        position: absolute;
+        top: var(--#{$prefix}subscription-arrow-top-spacing);
+        right: var(--#{$prefix}subscription-arrow-right-spacing);
+        border: 0;
+        background: transparent;
+        @include media-breakpoint-down(md) {
+            --#{$prefix}subscription-arrow-top-spacing: 6px;
+            --#{$prefix}subscription-arrow-right-spacing: 9px;
+            svg{
+                width: 30px;
+            }
+        }
+        color: var(--#{$prefix}subscription-placeholder-color);
+    }
+}
+
+// ======================== Subscription-1 ==========================>>>>
+
+
+// ======================== Subscription-2 ==========================>>>>
+.subscription-2{
+    --#{$prefix}subscription-2-bg: #F6F4F9;
+    background-color: var(--#{$prefix}subscription-2-bg);    
+}
+// ======================== Subscription-2 ==========================>>>>
+
+
+
+.contact-1{
+    --#{$prefix}contact-1-bg:#F6F4F9;
+    background-color: var(--#{$prefix}contact-1-bg);
+}
+.contact-lists{
+    li{
+        font-size: 24px;
+        font-weight: 600;
+        font-family: var(--#{$prefix}font-family-style-4);
+        transition: $transition-base;
+        @include media-breakpoint-down(md) {
+            font-size: 22px;
+        }
+        &:hover{
+            padding-left: 5px;
+        }
+    }        
+}
+.contact-icons{    
+    --#{$prefix}link-color: #838490;
+    --#{$prefix}link-color-rgb: 131, 132, 144;       
+}
+.contact-details{
+    max-width: 280px;
+    h3{
+        width: fit-content;
+    }
+}
+.custom-heading-color-1, .custom-heading-color-2{
+    --#{$prefix}heading-color: #28303F;
+}

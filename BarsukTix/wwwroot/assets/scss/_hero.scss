@@ -1,0 +1,423 @@
+
+.hero-wrapper.box-hero{
+    margin: 0 auto;
+    max-width: 92.36%;
+    &.parallax::after{
+        border-radius: 33px;
+    }
+    @include media-breakpoint-down(lg) {
+        max-width: 100%;    
+    }   
+    @include media-breakpoint-down(md) {
+        max-width: 100%;    
+    } 
+}
+
+.hero-brand-images{
+    padding-top: 20px;
+    @include media-breakpoint-down(sm) {
+        flex-direction: row;
+        img{
+            max-width: 88px;
+        }
+    }
+}
+@media (min-width: 992px) and (max-width: 1590px){
+    .hero-brand-images{
+        padding-top: 6px;    
+    }
+}
+
+// ======================== Hero-1 ==========================>>>>
+.hero-1{    
+    margin-top: 160px;
+    @include media-breakpoint-down(xxl) {
+        margin-top: 127px;
+    } 
+    @include media-breakpoint-down(lg) {
+        margin-top: 100px;
+    }        
+    .hero-wrapper {        
+        --bg-parallax-image: url(../images/home-1/hero-image-2.jpg);    
+        --bg-parallax-opacity: 1; 
+        &.parallax::after{
+            background-position: left center;
+        }
+        padding: 280px 0 70px 0;
+        @include media-breakpoint-down(xxl) {
+            padding: 150px 0 60px 0;            
+        }               
+        @include media-breakpoint-down(lg) {
+            max-width: 100%;    
+            padding: 220px 0 40px 0;
+            &.parallax::after{
+                background-position: center;
+            }
+        }   
+        @include media-breakpoint-down(md) {
+            max-width: 100%;    
+            padding: 75px 0 40px 0;            
+        } 
+    }
+}
+
+// ======================== Hero-1 ==========================>>>>
+
+    
+.hero-5{
+    margin-top: 150px;    
+    @include media-breakpoint-down(xxl) {
+        margin-top: 123px;
+    }    
+    @include media-breakpoint-down(lg) {
+        margin-top: 112px;
+    }
+    .hero-wrapper {        
+        --bg-parallax-image: url(../images/hero-5-bg.jpg);    
+        --bg-parallax-opacity: 1;
+
+        padding: 200px 0 40px 0;
+        @include media-breakpoint-down(xxl) {
+            padding: 150px 0 60px 0;            
+        }
+        @include media-breakpoint-down(xl) {
+            padding: 130px 0 50px 0;
+        }        
+        @include media-breakpoint-down(lg) {
+            max-width: 100%;    
+            padding: 220px 0 40px 0;
+        }   
+        @include media-breakpoint-down(md) {
+            max-width: 100%;    
+            padding: 75px 0 40px 0;
+            .event-info{
+                margin-top: 0;
+            }
+        } 
+    }
+}
+
+
+// ======================== Hero-2 ==========================>>>>
+.hero-2{    
+    .hero-wrapper {        
+        --bg-parallax-image: url(../images/home-2/hero-2-bg.jpg);    
+        --bg-parallax-opacity: 1;
+        padding: 380px 0 145px 0;
+        @include media-breakpoint-down(xxl) {
+            padding: 230px 0 160px 0;            
+        }                
+        @include media-breakpoint-down(lg) {
+            max-width: 100%;    
+            padding: 350px 0 140px 0;
+        }   
+        @include media-breakpoint-down(md) {
+            max-width: 100%;    
+            padding: 500px 0 320px 0;
+        } 
+    }            
+}
+// ======================== Hero-2 ==========================>>>>
+
+
+
+// ======================== Hero-3 ==========================>>>>
+.hero-3{
+    .hero-inner-text{
+        --#{$prefix}heading-color: #fff;
+    }
+    .hero-wrapper {        
+        --bg-parallax-image: url(../images/home-3/hero-3-bg.jpg);    
+        --bg-parallax-opacity: 1;
+        &.parallax::after{
+            background-position: top center;
+        } 
+        padding: 330px 60px 185px 60px;        
+        @include media-breakpoint-down(xxl) {
+            padding: 190px 40px 100px 40px;
+        }              
+        @include media-breakpoint-down(md) {               
+            padding: 300px 16px 40px 16px;
+        }       
+        @include media-breakpoint-down(sm) {               
+            padding: 300px 16px 100px 16px;
+        }  
+        .hero-6-texts{
+            z-index: 1;
+            position: relative;
+        }
+        .musicfest-image{
+            margin-left: 10px;
+            @include media-breakpoint-down(lg) {               
+                margin-left: 8px;
+            }       
+            @include media-breakpoint-down(md) {               
+                margin-left: 4px;
+            } 
+        }
+    }
+} 
+
+
+.social-links{
+    position: absolute;
+    right: 60px;
+    bottom: 195px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    h3{
+        color: var(--#{$prefix}white);
+        transition: $transition-base;
+        margin-bottom: 0;
+    }
+    a{
+        &:hover{
+            h3{
+                color: var(--#{$prefix}primary);
+            }
+        }
+    }
+    @include media-breakpoint-down(xxl) {
+        bottom: 115px;
+        right: 26px;
+        gap: 15px;
+        h3{
+            font-size: 1.25rem;
+        }
+    }    
+    @include media-breakpoint-down(lg) {
+        bottom: 110px;
+        right: 36px;
+        gap: 15px;
+    }
+    @include media-breakpoint-down(md) {
+        bottom: 50px;        
+    }
+    @include media-breakpoint-down(sm) {
+        flex-direction: row;
+        right: auto;
+        left: 18px;
+        bottom: 62px;       
+    }
+}
+@media screen and (max-width: 1310px){
+    .social-links{        
+        a h3{
+            display: none;
+        }
+    }
+}
+@media screen and (min-width: 1200px) and (max-width: 1310px){
+    .social-links{
+        right: 100px;
+        bottom: 112px;
+        gap: 30px;        
+    }
+}
+@media screen and (min-width: 992px) and (max-width: 1199.9px){
+    .social-links{
+        right: 70px;
+        bottom: 116px;
+        gap: 30px;       
+    }
+}
+
+// ======================== Hero-3 ==========================>>>>
+
+
+
+// ======================== Hero-4 ==========================>>>>
+.hero-4{    
+    .hero-wrapper {        
+        --bg-parallax-image: url(../images/hero-4.jpg);    
+        --bg-parallax-opacity: 1;               
+        padding: 280px 0 70px 0;
+
+        @include media-breakpoint-down(xxl) {
+            padding: 200px 0 60px 0;            
+        }
+        @include media-breakpoint-down(xl) {
+            padding: 180px 0 50px 0;
+        }        
+        @include media-breakpoint-down(lg) {
+            max-width: 100%;    
+            padding: 220px 0 40px 0;
+        }   
+        @include media-breakpoint-down(md) {
+            max-width: 100%;    
+            padding: 140px 0 40px 0;
+        } 
+    }
+}
+
+// ======================== Hero-4 ==========================>>>>
+
+
+// ======================== Hero-7 ==========================>>>>
+.hero-7{    
+    --#{$prefix}hero-7-bg:  var(--#{$prefix}body-bg);
+    --#{$prefix}hero-7-border-color: rgba(0, 0, 0, .06);
+    background-color: var(--#{$prefix}hero-7-bg);
+    border-bottom: 1px solid var(--#{$prefix}hero-7-border-color);
+    .odometer-value{
+        font-family: 'Plus Jakarta Sans' , sans-serif;
+    }
+    .hero-wrapper {        
+        --bg-parallax-image: url(../images/home-7/hero-7-bg.png);    
+        --bg-parallax-opacity: 1;
+
+        padding: 280px 0 130px 0;
+
+        @include media-breakpoint-down(xxl) {
+            padding: 130px 0 80px 0;           
+        }               
+        @include media-breakpoint-down(lg) {
+            max-width: 100%;    
+            padding: 220px 0 80px 0;
+        }   
+        @include media-breakpoint-down(md) {
+            max-width: 100%;    
+            padding: 140px 0 60px 0;
+        } 
+    }    
+}
+.hero-image-mask img{
+    border-radius: 150px;
+}
+// ======================== Hero-7 ==========================>>>>
+
+
+// ======================== Hero-8 ==========================>>>>
+.hero-8{
+    .hero-wrapper {        
+        --bg-parallax-image: url(../images/hero-8-bg.jpg);  
+        padding: 280px 0 200px 0;        
+        @include media-breakpoint-down(xxl) {
+            padding: 180px 0 160px 0;            
+        }
+        @include media-breakpoint-down(xl) {
+            padding: 180px 0 200px 0;
+        }        
+        @include media-breakpoint-down(lg) {
+            max-width: 100%;    
+            padding: 220px 0 140px 0;
+        }   
+        @include media-breakpoint-down(md) {
+            max-width: 100%;    
+            padding: 130px 0 510px 0;
+        }
+        @include media-breakpoint-down(sm) {
+            max-width: 100%;    
+            padding: 130px 0 340px 0;
+        }
+        &:after{
+            opacity: var(--bg-parallax-opacity, 1);
+        }
+    }
+}
+.hero-8-inner{
+    max-width: 950px;
+    @include media-breakpoint-down(xl) {
+        max-width: 750px;
+    }
+    @include media-breakpoint-down(lg) {
+        max-width: 450px;
+    }
+    @include media-breakpoint-down(md) {
+        max-width: 430px;
+    }
+}
+.hero-heading-text{
+    line-height: 93.182%;
+    letter-spacing: -1.6px;
+    font-size: 160px;   
+    font-weight: 900; 
+    @include media-breakpoint-down(xxl) {
+        font-size: 115px;      
+    }
+    @include media-breakpoint-down(xl) {
+        font-size: 100px;    
+    }    
+    @include media-breakpoint-down(lg) {
+        font-size: 90px;        
+    }
+    @include media-breakpoint-down(sm) {
+        font-size: 70px;        
+    }
+}
+.hero-8-image{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 11%;
+    z-index: 2;
+    @include media-breakpoint-down(xxl) {
+        margin-right: 7%;
+        img{
+            max-width: 650px;
+        }
+    }
+    @include media-breakpoint-down(xl) {
+        margin-right: 1%;
+        img{
+            max-width: 600px;
+        }
+    }
+    @include media-breakpoint-down(lg) {
+        margin-right: -28%;
+        img{
+            max-width: 700px;
+        }
+    }
+    @include media-breakpoint-down(md){
+        margin-right: 15%;
+        img{
+            max-width: 500px;
+        }
+    }
+    @include media-breakpoint-down(sm) {
+        margin-right: 2%;
+       img{
+            width: 340px !important;
+       } 
+    }
+
+}
+@media (min-width: 1400px) and (max-width: 1750px){
+    .hero-8-image{        
+        margin-right: 0;        
+    }
+}
+
+// ======================== Hero-8 ==========================>>>>
+
+
+
+.banner-1 {        
+    --bg-parallax-image: url(../images/banner-1.jpg);    
+    --bg-parallax-opacity: 1;
+    --#{$prefix}banner-heading-color : #fff;
+    &.parallax::after{
+        background-position: center bottom;
+    }
+    padding: 250px 0 70px 0;
+    .banner-heading{
+        color: var(--#{$prefix}banner-heading-color);
+    }
+    @include media-breakpoint-down(lg) {
+        padding: 140px 0 60px 0;
+    }
+
+    &.banner-2{
+        --bg-parallax-image: url(../images/banner-2.jpg);
+    }
+    &.banner-3{
+        --bg-parallax-image: url(../images/banner-3.jpg);   //=======================================================Update
+    }
+}
+
+.event-single-hero .hero-wrapper{
+    --bg-parallax-image: url(../images/banner-1.jpg);
+    padding: 180px 0 200px 0;
+}

@@ -1,0 +1,51 @@
+#map {
+  width: 100%;
+  height: 344px;
+  border-radius: 30px;
+}
+
+.eventiva-marker-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.leaflet-popup-content-wrapper {
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.11);
+  background: rgba(38, 31, 48, 0.22);
+  backdrop-filter: blur(5px);
+}
+
+.leaflet-popup-tip-container {
+  width: 0;
+}
+
+#RoutingMap {
+  width: 100%;
+  min-height: calc(100vh - 250px);
+}
+
+.modal#RoutingMapModal {
+  --bs-modal-width: 100%;
+  z-index: 999999;
+}
+
+.modal#RoutingMapModal .eventiva-destination-marker-icon {
+  margin-left: -12px;
+  margin-top: -35px;
+}
+
+.modal#RoutingMapModal .eventiva-destination-marker-icon svg {
+  fill: var(--bs-primary);
+}
+
+.modal#RoutingMapModal .eventiva-current-marker-icon svg {
+  fill: green;
+}
+
+.routing-map-modal img.leaflet-marker-icon {
+  opacity: 0;
+}
+
+/*# sourceMappingURL=leaflet-style.css.map */

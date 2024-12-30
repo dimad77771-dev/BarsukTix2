@@ -1,0 +1,246 @@
+
+.btn {
+    --#{$prefix}btn-padding-x: 2.7rem;
+    --#{$prefix}btn-padding-y: 0.75rem;
+    --#{$prefix}btn-font-size: 1rem;
+    --#{$prefix}btn-font-weight: 600;
+    --#{$prefix}btn-font-family: var(--#{$prefix}font-family-style-2); 
+    --#{$prefix}btn-border-radius : 10px;
+    --#{$prefix}btn-hover-bg: transparent;
+    --#{$prefix}btn-active-bg: transparent;
+    --#{$prefix}btn-light-color: var(--#{$prefix}heading-color);
+    --#{$prefix}btn-light-2-color: #fff;
+    letter-spacing: .5px;
+    &.btn-sm{
+        --#{$prefix}btn-padding-x: 23px;
+        --#{$prefix}btn-padding-y: 11px;
+        --#{$prefix}btn-font-weight: 500;
+        --#{$prefix}btn-font-family: var(--#{$prefix}font-family-style-4); 
+        --#{$prefix}btn-border-width: 1px;  
+    }
+    &.btn-lg{
+        --#{$prefix}btn-padding-x: 4.5rem;         
+    }
+    &.btn-wide{
+        --#{$prefix}btn-padding-x: 4rem; 
+        @include media-breakpoint-down(md) {
+            --#{$prefix}btn-padding-x: 3rem;
+        }        
+    }
+    &.btn-rounded{
+        --#{$prefix}btn-border-radius : 45px;
+    }
+    svg{
+        transition: $transition-base;
+    }
+}
+
+.btn-primary {
+    --#{$prefix}btn-bg: var(--#{$prefix}primary);
+    --#{$prefix}btn-border-color: var(--#{$prefix}primary);
+    --#{$prefix}btn-hover-border-color: var(--#{$prefix}primary);   
+    --#{$prefix}btn-active-border-color: var(--#{$prefix}primary);   
+    --#{$prefix}btn-border-width: 2px;  
+    --#{$prefix}btn-hover-color: var(--#{$prefix}heading-color);
+    --#{$prefix}btn-active-color: var(--#{$prefix}heading-color);    
+}
+
+.btn-secondary {
+    --#{$prefix}btn-bg: var(--#{$prefix}secondary);
+    --#{$prefix}btn-border-color: var(--#{$prefix}secondary);
+    --#{$prefix}btn-hover-border-color: var(--#{$prefix}secondary);   
+    --#{$prefix}btn-active-border-color: var(--#{$prefix}secondary);   
+    --#{$prefix}btn-border-width: 2px;    
+    --#{$prefix}btn-color: var(--#{$prefix}white);
+    --#{$prefix}btn-hover-color: var(--#{$prefix}secondary);
+    --#{$prefix}btn-active-color: var(--#{$prefix}secondary);    
+}
+
+.btn-outline-primary {
+    --#{$prefix}btn-color: var(--#{$prefix}heading-color);
+    --#{$prefix}btn-bg: transparent;    
+    --#{$prefix}btn-border-color: var(--#{$prefix}primary);
+    --#{$prefix}btn-hover-bg: var(--#{$prefix}primary);
+    --#{$prefix}btn-active-bg: var(--#{$prefix}primary);
+    --#{$prefix}btn-hover-border-color: var(--#{$prefix}primary);  
+    --#{$prefix}btn-active-border-color: var(--#{$prefix}primary);  
+    --#{$prefix}btn-border-width: 2px;     
+    &.btn-outline-style-2{
+       --#{$prefix}btn-color: var(--#{$prefix}primary);
+    }
+}
+
+.btn-outline-secondary {
+    --#{$prefix}btn-bg: transparent;    
+    --#{$prefix}btn-border-color: var(--#{$prefix}secondary);
+    --#{$prefix}btn-hover-bg: var(--#{$prefix}secondary);
+    --#{$prefix}btn-active-bg: var(--#{$prefix}secondary);
+    --#{$prefix}btn-hover-border-color: var(--#{$prefix}secondary);    
+    --#{$prefix}btn-active-border-color: var(--#{$prefix}secondary);    
+    --#{$prefix}btn-border-width: 2px; 
+    --#{$prefix}btn-color: var(--#{$prefix}secondary);
+    --#{$prefix}btn-hover-color: #fff;
+    --#{$prefix}btn-active-color: #fff;   
+}
+
+.btn-custom-light{
+    --#{$prefix}btn-color: var(--#{$prefix}btn-light-color) !important;
+    // svg{
+    //     fill: var(--#{$prefix}btn-light-color);
+    // }
+    &:hover{
+        --#{$prefix}btn-color: var(--#{$prefix}heading-color)!important;
+        svg{
+            fill: var(--#{$prefix}heading-color);
+        }
+    }
+}
+.btn-light-style-2{
+    --#{$prefix}btn-color: var(--#{$prefix}btn-light-2-color);
+    svg{
+        fill: var(--#{$prefix}btn-light-2-color);
+    }
+    &:hover{
+        --#{$prefix}btn-color: var(--#{$prefix}heading-color)!important;
+        svg{
+            fill: var(--#{$prefix}heading-color);
+        }
+    }
+}
+.btn-custom-dark{
+    --#{$prefix}btn-dark-color: #000000; 
+    --#{$prefix}btn-custom-hover-color: #000000; 
+    --#{$prefix}btn-color: var(--#{$prefix}btn-dark-color);
+    --#{$prefix}btn-hover-color: var(--#{$prefix}btn-custom-hover-color)!important;
+    --#{$prefix}btn-active-color: var(--#{$prefix}btn-custom-hover-color)!important;    
+    color: var(--#{$prefix}btn-dark-color);
+}
+.btn-map-direction{
+	width: fit-content;    
+    --#{$prefix}btn-border-width: 2px !important;
+}
+
+.btn-gradient{
+    background-image: linear-gradient(90deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%);
+    --#{$prefix}btn-padding-x: 2.9rem;
+    --#{$prefix}btn-padding-y: 0.8rem;
+    --#{$prefix}btn-border-width: 0;      
+    --#{$prefix}btn-color: #fff;      
+    --#{$prefix}btn-hover-color: #fff;      
+    --#{$prefix}btn-active-color: #fff;      
+    transition: $transition-base;    
+    &:hover{
+        background-image: linear-gradient(90deg, var(--#{$prefix}secondary) 0%, var(--#{$prefix}primary) 100%);
+    } 
+    svg{
+        fill: currentColor;
+    }
+    &.btn-map-direction{        
+        --#{$prefix}btn-border-width: 0 !important;
+    }
+}
+
+.btn-outline-gradient , .btn-outline-gradient.btn{    
+    --#{$prefix}btn-active-border-color: transparent;
+    position: relative;   
+    text-decoration: none;
+    -webkit-background-clip: text !important; 
+    z-index: 9;
+    padding: 17px 39px !important; 
+    border-radius: 10px !important;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: var(--#{$prefix}font-family-style-2);
+    transition: $transition-base; 
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    --#{$prefix}btn-color: var(--#{$prefix}heading-color) !important;        
+    --#{$prefix}btn-hover-color: #fff !important; 
+    &:hover{         
+        border-radius: 10px;     
+        &:after{        
+            background: -webkit-linear-gradient(
+            6deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%
+            );           
+        }
+        &:before{
+            background: -webkit-linear-gradient(
+            6deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%
+            );
+        }  
+        svg{
+            transition: all 0s ease-in-out; 
+       }             
+    }    
+    &:before{
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        border-radius: 11px;
+        transition: all 0.5s;
+        background: rgba(var(--#{$prefix}primary-rgb),1);
+        background: -moz-linear-gradient(
+            96deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%
+        );
+        background: -webkit-gradient(
+            left bottom,
+            right top,
+            color-stop(0%, rgba(var(--#{$prefix}primary-rgb),1)),
+            color-stop(100%, rgba(var(--#{$prefix}primary-rgb),1))
+        );
+        background: -webkit-linear-gradient(
+            96deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%
+        );
+        background: -o-linear-gradient(
+            96deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%
+        );
+        background: -ms-linear-gradient(
+            96deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%
+        );
+        background: linear-gradient(
+            96deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%
+        );
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='var(--#{$prefix}primary)', endColorstr='var(--#{$prefix}secondary)', GradientType=1 );
+    }
+    &:after{
+        content: "";
+        display: block;
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        bottom: 2px;
+        right: 2px;
+        z-index: -1;
+        border-radius: 9px;
+        transition: all 0.5s;
+        background: var(--#{$prefix}body-bg);
+    }
+    @include media-breakpoint-down(lg) {
+        padding: 13px 24px !important;
+    } 
+    &.btn-gradient-style-2{
+        padding: 12.7px 48px !important;
+        &::before{
+            border-radius: 45px;
+        }
+        &::after{
+            border-radius: 43px;
+        }
+        &:hover{
+            &::after{
+                background: var(--#{$prefix}body-bg) !important;
+            }            
+        }
+    }    
+}
+
+.event-ticket-btn {
+    --#{$prefix}btn-padding-x: 1.5rem;
+    --#{$prefix}btn-padding-y: 0.75rem;
+}

@@ -1,0 +1,270 @@
+body{       
+    padding-right: 0 !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;    
+    --#{$prefix}body-font-size: 18px;
+    @include media-breakpoint-down(xl) {
+        overflow-x: hidden;       
+    }
+    @include media-breakpoint-down(lg) {    //=======================================================Update
+        --#{$prefix}body-font-size: 16px;       
+    }
+}
+html{
+    overflow-x: hidden;
+}
+
+.custom-roboto{
+    font-family: var(--#{$prefix}font-family-style-2) !important; 
+}
+
+.custom-sans{
+    font-family: var(--#{$prefix}font-family-style-1) !important;
+}
+
+.custom-jakarta{
+    font-family: var(--#{$prefix}font-family-style-4) !important;
+}
+
+.custom-poppins{
+    font-family: var(--#{$prefix}font-family-style-3) !important;
+}
+
+.custom-font-style-2{   //=======================================================Update (style-1 is deleted)
+    font-weight: 500;
+    margin-bottom: 0;
+}
+  
+.fw-extra-bold{
+    font-weight: 800;
+}
+
+.fw-extra-huge-bold{
+    font-weight: 900;
+}
+
+.extra-small{
+    font-size: 12px;
+    color: var(--#{$prefix}headings-color-light);
+}
+
+
+.fs-100{
+    font-size: 100px;       
+    @include media-breakpoint-down(xxl) {
+        font-size: 80px;
+    }
+    @include media-breakpoint-down(xl) {
+        font-size: 70px;
+    }    
+    @include media-breakpoint-down(lg) {
+        font-size: 45px;        
+    } 
+    @include media-breakpoint-down(md) {
+        font-size: 40px;        
+    }
+}
+.fs-120{
+    font-size: 120px;       
+    @include media-breakpoint-down(xxl) {
+        font-size: 90px;
+    }
+    @include media-breakpoint-down(xl) {
+        font-size: 80px;
+    }    
+    @include media-breakpoint-down(lg) {
+        font-size: 50px;        
+    } 
+    @include media-breakpoint-down(sm) {
+        font-size: 37px;        
+    }
+}
+.fs-160{
+    font-size: 160px;    
+    @include media-breakpoint-down(xxl) {
+        font-size: 130px;        
+    }
+    @include media-breakpoint-down(xl) {
+        font-size: 100px;    
+    }    
+    @include media-breakpoint-down(lg) {
+        font-size: 60px;        
+    }
+    @include media-breakpoint-down(sm) {
+        font-size: 50px;        
+    }
+}
+
+.fs-180{
+    font-size: 180px;    
+    @include media-breakpoint-down(xxl) {
+        font-size: 140px;        
+    }
+    @include media-breakpoint-down(xl) {
+        font-size: 120px;    
+    }    
+    @include media-breakpoint-down(lg) {
+        font-size: 80px;        
+    }
+    @include media-breakpoint-down(sm) {
+        font-size: 60px;        
+    }
+}
+
+.fs-180-style-2{
+    font-size: 180px;  
+    line-height: 1;  
+    @include media-breakpoint-down(xxl) {
+        font-size: 140px;        
+    }
+    @include media-breakpoint-down(xl) {
+        font-size: 120px;    
+    }    
+    @include media-breakpoint-down(lg) {
+        font-size: 96px;        
+    }    
+}
+
+.extra-huge-text-1{
+    font-size: 200px;  
+    line-height: 175px;   
+    white-space: nowrap;       
+    @include media-breakpoint-down(lg) {
+        font-size: 100px;
+        line-height: 80px;        
+    }
+    @include media-breakpoint-down(sm) {
+        font-size: 60px;        
+        letter-spacing: -1.9px;
+        line-height: 60px;
+    }
+}
+@media (min-width: 1200px) and (max-width: 1590px){
+    .extra-huge-text-1{       
+        font-size: 145px !important; 
+        line-height: 134px !important;          
+    }
+}
+@media screen and (min-width: 992px) and (max-width: 1199.9px){
+    .extra-huge-text-1{       
+        font-size: 125px; 
+        line-height: 105px;          
+    }
+}
+
+.extra-huge-text-2{
+    font-size: 320px;  
+    font-weight: 900;  
+    position: relative;
+    line-height: 240px;
+    letter-spacing: -10.8px;
+       
+    @include media-breakpoint-down(lg) {
+        font-size: 170px;
+        line-height: 135px;  
+        font-weight: 800;  
+        letter-spacing: -4.8px; 
+    }
+    @include media-breakpoint-down(sm) {
+        font-size: 105px;   
+        line-height: 98px;  
+        font-weight: 700;     
+    }
+}
+@media (min-width: 1200px) and (max-width: 1590px){
+    .extra-huge-text-2{       
+        font-size: 274px !important; 
+        line-height: 210px !important;         
+    }
+}
+@media screen and (min-width: 992px) and (max-width: 1199.9px){
+    .extra-huge-text-2{       
+        font-size: 222px; 
+        line-height: 180px;
+        letter-spacing: -7.8px;         
+    }
+}
+
+
+.extra-huge-text{
+    font-size: 220px;    
+    position: relative;
+    line-height: 200px;
+    @include media-breakpoint-down(xxl) {
+        font-size: 180px;   
+        line-height: 180px;
+    }
+    @include media-breakpoint-down(xl) {
+        font-size: 160px; 
+        line-height: 160px;
+    }    
+    @include media-breakpoint-down(lg) {
+        font-size: 100px;      
+        line-height: 120px;  
+    }
+    @include media-breakpoint-down(md) {
+        font-size: 70px; 
+        line-height: 100px;  
+    }
+    @include media-breakpoint-down(sm) {
+        font-size: 54px;
+        line-height: 56px;          
+    }    
+}
+
+.customise-display-6{
+    --#{$prefix}heading-color: #d2d2d2;
+    font-size: 42px;  
+    position: relative;
+    color: var(--#{$prefix}heading-color);
+    @include media-breakpoint-down(xl) {
+        font-size: 32px; 
+    }    
+    @include media-breakpoint-down(lg) {
+        font-size: 24px;  
+    }
+    @include media-breakpoint-down(md) {
+        font-size: 20px; 
+    }    
+}
+
+.music-fest{
+    --#{$prefix}heading-color: #d2d2d2;       
+    color: var(--#{$prefix}heading-color);
+    font-size: 80px;    
+    @include media-breakpoint-down(xxl) {
+        font-size: 68px; 
+    }
+    @include media-breakpoint-down(xl) {
+        font-size: 58px; 
+    }
+    @include media-breakpoint-down(lg) {
+        font-size: 48px; 
+    }
+    @include media-breakpoint-down(md) {
+        font-size: 38px; 
+    }    
+}
+
+.sub-title.display-3{
+    line-height: 1;
+    @include media-breakpoint-down(lg){
+        line-height: 1.2;
+    }
+}
+.sub-title{
+    .gradient-subtitle{
+        max-height: 122px;
+        margin-top: -44px;
+        width: 100%;        
+        filter: drop-shadow(20px 9px 36px rgba(var(--#{$prefix}primary-rgb), .3)) 
+                drop-shadow(2px 5px 15px rgba(var(--#{$prefix}primary-rgb), 0.4)) 
+                drop-shadow(2px 4px 8px rgba(var(--#{$prefix}secondary-rgb), 0.3)) 
+                drop-shadow(-2px -10px 5px rgba(var(--#{$prefix}secondary-rgb), 0.4));
+        @include media-breakpoint-down(lg){
+            max-height: 118px;
+            margin-top: -55px;
+        }
+    }    
+}

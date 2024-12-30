@@ -1,0 +1,172 @@
+
+// ======================== Pricing-1 ==========================>>>>
+
+.bg-ticket{ 
+    --#{$prefix}pricing-border-color: #d2d2d2;
+    --#{$prefix}pricing-border-radius: 30px ;
+    --#{$prefix}pricing-border-width: 2px ;
+    --#{$prefix}pricing-icon-color : var(--#{$prefix}primary);
+    --#{$prefix}ticket-bg : #fff;
+    --#{$prefix}circle-fill-color: var(--#{$prefix}primary);
+    --#{$prefix}circle-bg: rgba(var(--#{$prefix}primary-rgb),.4) ;
+
+    .pricing-top-content{
+        border-top: var(--#{$prefix}pricing-border-width) solid var(--#{$prefix}pricing-border-color);
+        border-left: var(--#{$prefix}pricing-border-width) solid var(--#{$prefix}pricing-border-color);
+        border-right: var(--#{$prefix}pricing-border-width) solid var(--#{$prefix}pricing-border-color);
+        border-radius: var(--#{$prefix}pricing-border-radius) var(--#{$prefix}pricing-border-radius) 0 0 ;
+        padding: 50px 50px 60px 50px;
+        background-color: var(--#{$prefix}ticket-bg);
+        @include media-breakpoint-down(xxl){
+            padding: 40px 30px 40px 30px;
+        }
+        @include media-breakpoint-down(xl){
+            padding: 50px 50px 60px 50px;
+        }
+    }
+    .pricing-bottom-content{
+        border-bottom: var(--#{$prefix}pricing-border-width) solid var(--#{$prefix}pricing-border-color);
+        border-left: var(--#{$prefix}pricing-border-width) solid var(--#{$prefix}pricing-border-color);
+        border-right: var(--#{$prefix}pricing-border-width) solid var(--#{$prefix}pricing-border-color);
+        border-radius: 0 0 var(--#{$prefix}pricing-border-radius) var(--#{$prefix}pricing-border-radius);  
+        background-color: var(--#{$prefix}ticket-bg);      
+        padding-bottom: 46px;
+        display: flex;
+        justify-content: center;
+        margin-top: -1px;
+
+        .btn-outline-gradient, .btn-outline-gradient.btn{
+            text-transform: none;
+            padding: 12px 45.5px !important;
+            &:after{
+                background: var(--#{$prefix}ticket-bg);
+            }
+            &:hover{
+                &::after{
+                    background: -webkit-linear-gradient(6deg, var(--bs-primary) 0%, var(--bs-secondary) 100%);
+                }
+            }
+        }        
+    }
+
+    .pricing-list{
+        --#{$prefix}circle-fill-color: var(--#{$prefix}primary);
+        margin-bottom: 0;
+        li{        
+            display: flex;
+            align-items: center;
+            gap: 10px;            
+            .check-icon{
+                display: flex;
+                align-items: center;
+                justify-content: center;                
+                background-color: var(--#{$prefix}circle-bg);
+                border-radius: 50%;
+                color: var(--#{$prefix}circle-fill-color);
+                svg{
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }   
+    
+}
+
+.pricing-separator{     
+    --#{$prefix}pricing-separator-stroke-color: var(--#{$prefix}pricing-border-color);
+    svg{
+        fill: currentColor;
+        color: var(--#{$prefix}ticket-bg);
+        stroke: var(--#{$prefix}pricing-separator-stroke-color); 
+    }
+}
+
+
+@media (min-width: 767.9px) and (max-width: 991.9px){    
+    .bg-ticket{        
+        .pricing-top-content{
+            padding: 40px 30px 40px 30px;
+        }
+    }    
+}
+
+@media (min-width: 320px) and (max-width: 445px){    
+    .bg-ticket{        
+        .pricing-top-content{
+            padding: 40px 30px 40px 30px;
+        }
+    }
+}
+
+
+.pricing-subtitle{
+    color: var(--#{$prefix}body-color);
+}
+.pricing-icon{    
+    color: var(--#{$prefix}pricing-icon-color);
+}
+// ======================== Pricing-1 ==========================>>>>
+
+
+
+// ======================== Merchandise-1 ==========================>>>>
+.merchandise-1{
+    --#{$prefix}merchandise-1-bg: #F6F4F9;
+    --#{$prefix}merchandise-border: rgba(104, 102, 102, 0.30);
+    --#{$prefix}merchandise-wrapper-bg: #fff;
+    background-color: var(--#{$prefix}merchandise-1-bg);
+    h5{
+        color: var(--#{$prefix}heading-color);
+    }
+    .ellipse-image-4, .ellipse-image-6{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin-left: -56px;
+        margin-bottom: -55px;
+        animation: move-y 4s infinite  alternate;
+        @include media-breakpoint-down(md) {
+            margin-right: 0;
+            margin-top: -40px;  
+        }
+    }
+}
+.merchandise-wrapper{    
+    padding: 20px 20px 24px 20px;
+    border-radius: 30px;
+    border: 2px solid var(--#{$prefix}merchandise-border);
+    max-width: 310px;
+    background-color: var(--#{$prefix}merchandise-wrapper-bg);
+    .btn{
+        --#{$prefix}btn-font-size: 14px;
+    }
+    .btn-outline-primary , .btn-outline-secondary{
+        --#{$prefix}btn-padding-x: 1.5rem;
+        --#{$prefix}btn-padding-y: .65rem;
+    }
+    .merchandise-image{
+        overflow: hidden;
+        border-radius: 30px;
+        transition: $transition-base;
+    }
+    img{
+        transition: $transition-base;   
+    }
+    transition: $transition-base;
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+        img{
+            transform: scale(1.07);
+        }
+    }
+    &.merchandise-dark{
+        &:hover{            
+            box-shadow: rgba(255, 255, 255, 0.18) 0px 2px 4px;            
+        }
+    }
+}
+.product-information{
+    max-width: 142px;
+}
+// ======================== Merchandise-1 ==========================>>>>

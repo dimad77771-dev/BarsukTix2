@@ -1,0 +1,92 @@
+
+.eventiva-documentation{    
+    --#{$prefix}body-font-family: 'Roboto', sans-serif;
+    --#{$prefix}body-font-size: 16px;
+}
+.documentation{
+    // --#{$prefix}primary : #B20D5D ;
+    // --#{$prefix}link-color-rgb : #B20D5D;
+    // --#{$prefix}link-hover-color-rgb : #B20D5D;
+    // --#{$prefix}secondary : #4363EE;
+    h4{
+        text-decoration: underline;
+        margin-bottom: 20px;
+        transition: $transition-base;   
+        &:hover{
+            color: var(--#{$prefix}primary);
+        }    
+    }   
+    .custom-font{
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .key-features{
+        li{
+            transition: $transition-base;
+            &:hover{
+                color: var(--#{$prefix}primary);
+                padding-left: 5px;
+            }
+        }
+    }
+    .btn-eventiva{
+        font-size: 20px;
+    }
+    .btn-outline-gradient {    
+        height: 56px;
+        width: 300px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(96deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%);
+        position: relative;
+        z-index: 1;
+        text-decoration: none;
+        transition: $transition-base;
+        color: var(--#{$prefix}headings-color);
+        font-weight: 700;
+        text-transform: uppercase;
+        &::before{
+            content: '';
+            display: block;
+            background-color: var(--#{$prefix}white);
+            position: absolute;
+            border-radius: 10px;
+            height: 89.5%;
+            width: 98%;
+            z-index: -1;
+            transition: $transition-base;  
+        }
+        &:hover{
+            background-image: none;
+            color: var(--#{$prefix}headings-color) !important;
+            &::before{
+                background-color: var(--#{$prefix}primary);
+                height: 100%;
+                width: 100%;
+            }
+        }
+        &.btn-gradient-sm{
+            height: 60px;
+            width: 290px;
+            border-radius: 45px;
+            text-transform: capitalize;
+            transition: $transition-base;
+            &:before{
+                border-radius: 45px;
+                height: 92%;
+                width: 98%;
+            }
+            &:hover{
+                background-image: linear-gradient(96deg, var(--#{$prefix}secondary) 0%, var(--#{$prefix}primary) 100%);;
+                color: var(--#{$prefix}white) !important;
+                &::before{
+                    background-color: var(--#{$prefix}dark);
+                    height: 92%;
+                    width: 98%;
+                }
+            }
+        }
+    } 
+}

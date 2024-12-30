@@ -1,0 +1,184 @@
+
+// ======================== Home-1 ==========================>>>>
+.home-1{
+    --#{$prefix}warning: #0db231;
+    --#{$prefix}warning-rgb: 13, 178, 49;
+    --#{$prefix}primary: #B20D5D;
+    --#{$prefix}primary-rgb: 178, 13, 93;
+    --#{$prefix}secondary: #490AB5;
+    --#{$prefix}secondary-rgb: 73, 10, 181;
+    --#{$prefix}headings-color-light : #686666;    
+    --#{$prefix}navbar-toggler-color : #D2D2D2;  
+    --#{$prefix}link-hover-color-rgb: var(--#{$prefix}primary-rgb);    
+    --#{$prefix}link-hover-color: var(--#{$prefix}primary);    
+    --#{$prefix}body-color : #5B5C66;
+    --#{$prefix}navbar-border-color :rgba(255, 255, 255, 0.10);
+    --#{$prefix}navbar-bg-color : rgba(38, 31, 48, 0.02);
+    --#{$prefix}navbar-shadow-color : rgba(0, 0, 0, 0.39);
+    --#{$prefix}separator-color : rgba(136, 132, 146, 0.20);
+    --#{$prefix}navbar-active-color : var(--#{$prefix}primary);
+
+
+    // =============Custom-Inner-Background================>>>>>
+        --#{$prefix}custom-inner-bg: rgba(38, 31, 48, 0.22);
+        --#{$prefix}custom-inner-border-color: rgba(255, 255, 255, 0.11);
+        --#{$prefix}custom-inner-shadow-color: rgba(0, 0, 0, 0.39);
+    // =============Custom-Inner-Background================>>>>>    
+    
+}
+// ======================== Home-1 ==========================>>>>
+
+
+// ======================== Home-3 ==========================>>>>
+.home-3{
+    --#{$prefix}primary: #FCA311;
+    --#{$prefix}primary-rgb: 252, 163, 17;
+    --#{$prefix}secondary: #4361EE;
+    --#{$prefix}secondary-rgb: 67, 97, 238;
+    --#{$prefix}headings-color-light : #CECCDA;    
+    --#{$prefix}navbar-toggler-color : #333;    
+    --#{$prefix}link-hover-color-rgb: var(--#{$prefix}primary);    
+    --#{$prefix}body-color : #5B5C66;
+    --#{$prefix}navbar-border-color :rgba(255, 255, 255, 0.10);
+    --#{$prefix}navbar-bg-color : rgba(38, 31, 48, 0.02);
+    --#{$prefix}navbar-shadow-color : rgba(0, 0, 0, 0.39);
+    --#{$prefix}navbar-border-color-2 : #fff;
+    --#{$prefix}navbar-bg-color-2 : rgba(255, 255, 255, 0.10);
+    --#{$prefix}navbar-shadow-color-2 : rgba(0, 0, 0, 0.10);
+    --#{$prefix}separator-color : rgba(136, 132, 146, 0.20);
+
+
+    // =============Custom-Inner-Background================>>>>>
+        --#{$prefix}custom-inner-bg: #EBEDFF;
+        --#{$prefix}custom-inner-border-color: #E0E0FF;
+        --#{$prefix}custom-inner-shadow-color: rgba(255, 255, 255, 0.39);
+    // =============Custom-Inner-Background================>>>>>    
+
+    a:not(.btn){
+        transition: $transition-base;
+        color: var(--#{$prefix}heading-color);
+        &:hover{
+            color: var(--#{$prefix}link-hover-color-rgb);
+        }
+    }
+
+    a.nav-link{        
+        &.active{
+            color: var(--#{$prefix}link-hover-color-rgb);
+        }
+    }
+
+    .lineup-image-hover{
+        --#{$prefix}headings-color: #CECCDA;
+        h5{
+            color: var(--#{$prefix}headings-color);
+        }
+    }
+
+    .highlights-item-2{
+        &:hover,&.active{
+            h2{
+                color: var(--#{$prefix}headings-color-light);
+            }
+        } 
+    }
+}
+// ======================== Home-3 ==========================>>>>
+
+
+// ======================== Home-6 ==========================>>>>
+.home-6{
+    --#{$prefix}primary: #FCA311;
+    --#{$prefix}primary-rgb: 252, 163, 17;
+    --#{$prefix}secondary: #4361EE;
+    --#{$prefix}secondary-rgb: 67, 97, 238;
+    --#{$prefix}headings-color-light : #CECCDA;    
+    --#{$prefix}navbar-toggler-color : #333;    
+    --#{$prefix}link-hover-color-rgb : var(--#{$prefix}primary);
+    --#{$prefix}body-color : #5B5C66;
+    --#{$prefix}navbar-border-color :rgba(255, 255, 255, 0.10);
+    --#{$prefix}navbar-bg-color : rgba(38, 31, 48, 0.02);
+    --#{$prefix}navbar-shadow-color : rgba(0, 0, 0, 0.39);
+    --#{$prefix}navbar-border-color-2 : #fff;
+    --#{$prefix}navbar-bg-color-2 : rgba(255, 255, 255, 0.10);
+    --#{$prefix}navbar-shadow-color-2 : rgba(0, 0, 0, 0.10);
+    --#{$prefix}separator-color : rgba(136, 132, 146, 0.20);
+
+
+    // =============Custom-Inner-Background================>>>>>
+        --#{$prefix}custom-inner-bg: #EBEDFF;
+        --#{$prefix}custom-inner-border-color: #E0E0FF;
+        --#{$prefix}custom-inner-shadow-color: rgba(255, 255, 255, 0.39);
+    // =============Custom-Inner-Background================>>>>>    
+
+    a:not(.btn){
+        transition: $transition-base;
+        &:hover{
+            color: var(--#{$prefix}link-hover-color-rgb);
+        }
+    }
+
+    a.nav-link{        
+        &.active{
+            color: var(--#{$prefix}link-hover-color-rgb);
+        }
+    }
+
+    .highlights-item-2{
+        &:hover,&.active{
+            h2{
+                color: var(--#{$prefix}headings-color-light);
+            }
+        } 
+    }
+}
+// ======================== Home-6 ==========================>>>>
+
+
+// ======================== Home-7 ==========================>>>>
+.home-7{
+    --#{$prefix}secondary: #FCA311;
+    --#{$prefix}secondary-rgb: 252, 163, 17;
+    --#{$prefix}primary: #4361EE;
+    --#{$prefix}primary-rgb: 67, 97, 238;
+    --#{$prefix}headings-color-light : #CECCDA;
+    --#{$prefix}navbar-toggler-color : #333;
+    --#{$prefix}link-hover-color-rgb : var(--#{$prefix}primary);
+    --#{$prefix}body-color : #5B5C66;
+    --#{$prefix}navbar-border-color :rgba(255, 255, 255, 0.10);
+    --#{$prefix}navbar-bg-color : rgba(38, 31, 48, 0.02);
+    --#{$prefix}navbar-shadow-color : rgba(0, 0, 0, 0.39);
+    --#{$prefix}navbar-border-color-2 : #fff;
+    --#{$prefix}navbar-bg-color-2 : rgba(255, 255, 255, 0.10);
+    --#{$prefix}navbar-shadow-color-2 : rgba(0, 0, 0, 0.10);
+    --#{$prefix}separator-color : rgba(136, 132, 146, 0.20);
+
+    a:not(.btn){
+        transition: $transition-base;
+        &:hover{
+            color: var(--#{$prefix}link-hover-color-rgb);
+        }
+    }
+
+    a.nav-link{        
+        &.active{
+            color: var(--#{$prefix}link-hover-color-rgb);
+        }
+    }
+
+    .lineup-image-hover{
+        --#{$prefix}headings-color: #CECCDA;
+        h5{
+            color: var(--#{$prefix}headings-color);
+        }
+    }
+
+    .highlights-item-2{
+        &:hover,&.active{
+            h2{
+                color: var(--#{$prefix}headings-color-light);
+            }
+        } 
+    }
+}
+// ======================== Home-7 ==========================>>>>

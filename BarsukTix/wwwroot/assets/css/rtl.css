@@ -1,0 +1,119 @@
+/* =============Arrow================>>>>> */
+.ticket-arrow.arrow-up-right, .gradient-btn-arrow{
+    transform: rotate(-90deg);
+}
+.ticket-arrow.arrow-down-right{
+    transform: rotate(90deg);
+}
+.arrow-up-right-big.arrow-primary2{
+    color: var(--bs-primary);
+    stroke: var(--bs-primary);
+}
+.arrow-up-right-big.arrow-primary2:hover{
+    color: var(--bs-secondary);
+    stroke: var(--bs-secondary);
+}
+.arrow-up-right-big.arrow-secondary {
+    color: var(--bs-secondary);
+    stroke: var(--bs-secondary);
+}
+.arrow-up-right-big svg{
+    transform: rotate(-90deg);
+}
+.arrow-up-right-big {
+    color: var(--bs-heading-color);
+    stroke: var(--bs-heading-color);
+}
+.arrow-up-right-big:hover {
+    color: var(--bs-primary);
+    stroke: var(--bs-primary);
+}
+.arrow-up-short{
+    top: 1px;
+}
+.dark-wrapper-bg .arrow-up-right-big svg {
+    fill: var(--bs-primary);
+    stroke: var(--bs-primary);
+}
+/* =============Arrow================>>>>> */
+
+
+/* =============Image-Flip================>>>>> */
+
+
+.hero-8{
+    .hero-wrapper {        
+        --bg-parallax-image: url(../images/hero-8-bg-rtl.jpg);  
+    }
+}
+.hero-1{
+    .hero-wrapper {        
+        --bg-parallax-image: url(../images/home-1/hero-image-2-rtl.jpg); ;  
+    }
+}
+.hero-2{
+    .hero-wrapper {        
+        --bg-parallax-image: url(../images/home-2/hero-2-bg-rtl.jpg);   
+    }
+}
+.hero-3{
+    .hero-wrapper {        
+        --bg-parallax-image: url(../images/home-3/hero-3-bg-rtl.jpg);   
+    }
+}
+.banner-1 {        
+    --bg-parallax-image: url(../images/banner-1-rtl.jpg);  
+}
+.ticket-wrapper{
+    --bg-parallax-image: url(../images/about-ticket-image-rtl.jpg); 
+}
+
+/* =============Image-Flip================>>>>> */
+
+
+.award-left-content{
+    max-width: 533px;
+}
+
+
+
+/* =============Custom-Changes================>>>>> */
+.form-control{
+    direction: rtl;
+}
+.award-image img{    
+    border-radius: 0 33px 33px 0;
+}
+.video-popup .circle-wrapper .video-icon svg {    
+    margin-right: -3px;
+}
+
+.swiper-custom-progress .swiper-button-next span {
+    margin-right: -2px;
+}
+.swiper-custom-progress .swiper-button-prev span {
+    margin-left: -1px;
+}
+/* =============Custom-Changes================>>>>> */
+
+
+.gradient-subtitle .gradient-subtitle-text{
+    transform: translateX(100%);
+}
+
+.ball {    
+    transform: translate(0%, -50%);
+}
+
+@media (max-width: 991.98px) {
+    .arrow-up-right-big svg{
+        width: 100px;
+        height: 100px;
+    }
+}
+@media (max-width: 575.98px) {
+    .arrow-up-right-big svg{
+        width: 80px;
+        height: 80px;
+    }
+}

@@ -1,0 +1,110 @@
+
+.award-section{
+    background-color: var(--#{$prefix}award-bg);   
+}
+// ======================== Award-1 ==========================>>>>
+.award-1{
+    --#{$prefix}award-bg: #0C0614;    
+}
+.award-2{       
+    --#{$prefix}custom-inner-bg: #EBEDFF;
+    --#{$prefix}award-bg: var(--#{$prefix}custom-inner-bg);    
+    .btn-outline-gradient:after, .btn-outline-gradient.btn:after{ 
+        background: var(--#{$prefix}award-bg);
+    }
+}
+.award-left-content{
+    max-width: 533px;
+}
+.award-icon{
+    border: 1px solid var(--#{$prefix}primary);
+    border-radius: 15px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;    
+
+    &.award-icon-style-2{ 
+    border: none;
+    --#{$prefix}btn-active-border-color: transparent;
+    position: relative;   
+    text-decoration: none;
+    -webkit-background-clip: text !important; 
+    z-index: 9;
+    &:before{
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        border-radius: 11px;
+        transition: all 0.5s;
+        background: rgba(var(--#{$prefix}primary-rgb),1);
+        background: -moz-linear-gradient(
+            96deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%
+        );
+        background: -webkit-gradient(
+            left bottom,
+            right top,
+            color-stop(0%, rgba(var(--#{$prefix}primary-rgb),1)),
+            color-stop(100%, rgba(var(--#{$prefix}primary-rgb),1))
+        );
+        background: -webkit-linear-gradient(
+            96deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%
+        );
+        background: -o-linear-gradient(
+            96deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%
+        );
+        background: -ms-linear-gradient(
+            96deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%
+        );
+        background: linear-gradient(
+            96deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%
+        );
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='var(--#{$prefix}primary)', endColorstr='var(--#{$prefix}secondary)', GradientType=1 );
+    }
+    &:after{
+        content: "";
+        display: block;
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        bottom: 2px;
+        right: 2px;
+        z-index: -1;
+        border-radius: 9px;
+        transition: all 0.5s;
+        background: var(--#{$prefix}award-bg);
+    }
+    }
+}
+
+.award-image{
+    --#{$prefix}award-img-width: 945px;
+    --#{$prefix}award-img-height: 1110px;
+    --#{$prefix}award-img-border-radius: 33px 0 0 33px;
+    width: var(--#{$prefix}award-img-width);
+    height: var(--#{$prefix}award-img-height);
+    img{
+        border-radius: var(--#{$prefix}award-img-border-radius);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    @include media-breakpoint-down(lg) {
+        --#{$prefix}award-img-width: auto;
+        --#{$prefix}award-img-height: auto;
+        --#{$prefix}award-img-border-radius: 30px;
+        img{            
+            max-width: 100%;
+            height: auto;
+        }
+    }    
+}
+
+// ======================== Award-1 ==========================>>>>

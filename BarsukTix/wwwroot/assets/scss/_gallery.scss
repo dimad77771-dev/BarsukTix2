@@ -1,0 +1,44 @@
+
+// ======================== Gallery-1 ==========================>>>>
+
+.gallery-image img{    
+    --#{$prefix}gallery-image-height: 257px;
+    height: var(--#{$prefix}gallery-image-height) !important;
+    object-fit: cover;
+    border-radius: 30px !important;
+    width: 100%;  
+    @include media-breakpoint-down(xxl) {        
+        --#{$prefix}gallery-image-height: 245px;        
+    } 
+    @include media-breakpoint-down(lg) {        
+        --#{$prefix}gallery-image-height: 230px;        
+    } 
+    @include media-breakpoint-down(md) {        
+        --#{$prefix}gallery-image-height: 220px;        
+    }
+}
+
+.swiper_gallery {
+    .swiper-slide {        
+        width: 380px;
+        max-width: 70vw;
+    }
+    .swiper-wrapper {
+        transition-timing-function: linear;
+    }
+}
+
+.swiper_gallery2 {
+    margin-top: 35px;
+    .swiper-slide {        
+        width: 380px;
+        max-width: 70vw;
+        &:nth-child(3n+1) {
+            width: 180px;
+        }
+    }
+    .swiper-wrapper {
+        transition-timing-function: linear;
+    }
+}
+// ======================== Gallery-1 ==========================>>>>

@@ -1,0 +1,379 @@
+
+.header-section{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    &.sticky{
+        position: fixed;
+        z-index: 99;
+        width: 100%;
+        top: 0;
+        left: 0;
+        animation: fadeInDown .7s ease-in-out 0s 1 normal none running;
+        transition: all .3s ease 0s;
+        //=======================================================Update
+        // .btn {
+        //     --#{$prefix}btn-padding-x: 1.5rem;
+        //     --#{$prefix}btn-padding-y: 0.65rem;
+        // }
+    }
+    .navbar{
+        --#{$prefix}navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        --#{$prefix}navbar-toggler-border-color: var(--#{$prefix}headings-color);
+        --#{$prefix}navbar-color: var(--#{$prefix}heading-color);
+    }
+    .nav-link{
+        letter-spacing: 1px;
+        color: var(--#{$prefix}nav-link-color) !important;
+        &.active{
+            color: var(--#{$prefix}primary) !important;
+        }
+        &:hover{
+            color: var(--#{$prefix}primary) !important;
+        }
+    }
+}
+
+// ======================== Header-1 ==========================>>>>
+.header-1{        
+    margin: 30px 0 0 0;  
+    @include media-breakpoint-down(xxl) {            
+        margin: 20px 0 0 0;                
+    }  
+    .navbar{   
+        --#{$prefix}navbar-padding-x: 20px;
+        --#{$prefix}navbar-padding-y: 20px;
+        @include media-breakpoint-down(xxl) {            
+            --#{$prefix}navbar-padding-y: 14px;              
+        }
+        --#{$prefix}navbar-hover-color: var(--#{$prefix}primary);
+        --#{$prefix}navbar-active-color:var(--#{$prefix}headings-color);           
+        border-radius: 15px !important;       
+        backdrop-filter: blur(25px); 
+        
+        .nav-link{
+            --#{$prefix}nav-link-font-weight: 600;
+            --#{$prefix}nav-link-font-size: 1rem;
+            --#{$prefix}navbar-nav-link-padding-x :0;
+            text-transform: uppercase;
+        }
+        .navbar-toggler{
+            --#{$prefix}navbar-toggler-padding-x: 0;
+            border: 0;
+            &:focus{
+                text-decoration: none;
+                outline: none;
+                box-shadow: none;
+            }            
+        }
+        @include media-breakpoint-down(lg) {            
+            --#{$prefix}navbar-padding-y: 6px;              
+        }
+    } 
+    &.sticky{
+        margin: 10px 0 0 0;  
+        .navbar{
+        --#{$prefix}navbar-padding-y: 8px;
+        }
+    }    
+}
+// ======================== Header-1 ==========================>>>>
+
+
+
+// ======================== Header-2 ==========================>>>>
+.header-2{
+    --#{$prefix}header-2-border-bottom: rgba(104, 102, 102, 0.30);
+    margin-top: 20px;
+    .navbar-toggler{
+        --#{$prefix}navbar-toggler-padding-x: 0;
+        border: 0;
+        &:focus{
+            text-decoration: none;
+            outline: none;
+            box-shadow: none;
+        }            
+    }
+    &.sticky{
+    margin-top: 0;
+    background-color: var(--#{$prefix}body-bg);
+    border-bottom: 2px solid var(--#{$prefix}header-2-border-bottom);
+        .navbar{
+        --#{$prefix}navbar-padding-y: 6px;
+        }
+    }
+}
+// ======================== Header-2 ==========================>>>>
+
+
+// ======================== Header-2 ==========================>>>>
+.header-3{
+    .navbar{
+        --#{$prefix}navbar-padding-y: 50px;
+        --#{$prefix}navbar-padding-x: 60px;
+        @include media-breakpoint-down(xxl) {
+            --#{$prefix}navbar-padding-y: 35px;
+            --#{$prefix}navbar-padding-x: 35px;
+        }
+    }
+    &.transparent-header{
+        .shop-icon-xl,.offcanvas-menu-icon{
+            color: #fff;            
+        }       
+        .logo-custom-light{
+            display: block;
+        } 
+        .logo-custom-dark{
+            display: none;
+        } 
+    }
+    .navbar-nav{
+        --#{$prefix}navbar-color:var(--#{$prefix}white);
+        --#{$prefix}navbar-hover-color:var(--#{$prefix}primary);
+    }
+    .nav-link{
+        color: var(--#{$prefix}nav-link-color) !important;
+        transition: $transition-base;
+        &:hover{
+            color: var(--#{$prefix}navbar-hover-color) !important;
+        }
+        &.active{
+            color: var(--#{$prefix}navbar-hover-color) !important;
+        }
+    }
+    .navbar-toggler{
+        --#{$prefix}navbar-toggler-padding-x: 0;
+        border: 0;
+        &:focus{
+            text-decoration: none;
+            outline: none;
+            box-shadow: none;
+        }            
+    }
+    &.sticky{
+        margin-top: 0;
+        background-color: var(--#{$prefix}white);
+        box-shadow: rgba(0, 0, 0, 0.13) 0px 2px 4px;
+        .offcanvas-menu-icon svg{
+            width: 32px;
+            height: 32px;
+            @include media-breakpoint-down(lg) {
+                width: 24px;
+                height: 24px;
+            }
+        }
+        .navbar{
+            --#{$prefix}navbar-padding-y: 8px;
+        }
+        &.transparent-header{  
+            .shop-icon-xl,.offcanvas-menu-icon{
+                color: #000;                
+            }          
+            .logo-custom-light{
+                display: none;
+            } 
+            .logo-custom-dark{
+                display: block;
+            } 
+        }
+    }
+    @include media-breakpoint-down(lg) {
+        .navbar{
+            --#{$prefix}navbar-padding-y: 20px;
+            --#{$prefix}navbar-padding-x: 12px;
+        }
+    }
+    @include media-breakpoint-down(sm) {
+        .navbar{            
+            --#{$prefix}navbar-padding-x: 8px;
+        }
+    }
+
+}
+// ======================== Header-2 ==========================>>>>
+
+
+// ======================== Header-7 ==========================>>>>
+.header-7{        
+    margin: 30px 0 0 0;    
+    .navbar{   
+        --#{$prefix}navbar-padding-x: 20px;
+        --#{$prefix}navbar-padding-y: 20px;
+        --#{$prefix}navbar-hover-color: var(--#{$prefix}primary);
+        --#{$prefix}navbar-active-color:var(--#{$prefix}headings-color);           
+        border-radius: 15px;
+        border: 2px solid var(--#{$prefix}navbar-border-color-2);
+        background: var(--#{$prefix}navbar-bg-color-2);
+        box-shadow: 1px 0px 39px 0px var(--#{$prefix}navbar-shadow-color-2);
+        backdrop-filter: blur(25px); 
+        
+        .nav-link{
+            --#{$prefix}nav-link-font-weight: 600;
+            --#{$prefix}nav-link-font-size: 1rem;
+            --#{$prefix}navbar-nav-link-padding-x :0;
+            text-transform: uppercase;
+        }
+        .navbar-toggler{
+            --#{$prefix}navbar-toggler-padding-x: 0;
+            border: 0;
+            &:focus{
+                text-decoration: none;
+                outline: none;
+                box-shadow: none;
+            }            
+        }
+        @include media-breakpoint-down(lg) {            
+            --#{$prefix}navbar-padding-y: 6px;              
+        }
+        @include media-breakpoint-down(xxl) {            
+            --#{$prefix}navbar-padding-x: 16px;
+            --#{$prefix}navbar-padding-y: 13px;              
+        }
+
+    } 
+    &.sticky{
+        margin: 10px 0 0 0;    
+        .navbar{
+        --#{$prefix}navbar-padding-y: 6px;
+        }
+    } 
+    @include media-breakpoint-down(xxl) {            
+        margin: 22px 0 0 0;             
+    }   
+}
+// ======================== Header-7 ==========================>>>>
+
+
+// ======================== Header-7 ==========================>>>>
+.header-4{       
+    background: #FFF;
+    box-shadow: 1px 0px 39px 0px rgba(0, 0, 0, 0.10);
+    backdrop-filter: blur(12.5px); 
+    .navbar{   
+        --#{$prefix}navbar-padding-x: 40px;
+        --#{$prefix}navbar-padding-y: 24px;
+        --#{$prefix}navbar-hover-color: var(--#{$prefix}primary);
+        --#{$prefix}navbar-active-color:var(--#{$prefix}secondary);           
+        --#{$prefix}navbar-color:#5B5C66; 
+        
+        .nav-link{
+            --#{$prefix}nav-link-font-weight: 600;
+            --#{$prefix}nav-link-font-size: 1rem;
+            --#{$prefix}navbar-nav-link-padding-x :0;
+            text-transform: uppercase;
+        }
+        .navbar-toggler{
+            --#{$prefix}navbar-toggler-padding-x: 0;
+            border: 0;
+            &:focus{
+                text-decoration: none;
+                outline: none;
+                box-shadow: none;
+            }            
+        }
+        @include media-breakpoint-down(lg) {            
+            --#{$prefix}navbar-padding-y: 10px;
+            --#{$prefix}navbar-padding-x: 14px;             
+        }
+    } 
+    &.sticky{  
+        .navbar{
+            --#{$prefix}navbar-padding-x: 18px;
+            --#{$prefix}navbar-padding-y: 8px;
+        }
+    }    
+}
+// ======================== Header-7 ==========================>>>>
+
+
+
+// ======================== Header-5 ==========================>>>>
+.header-5{
+    margin-top: 25px;
+    @include media-breakpoint-down(xxl) {
+        margin-top: 20px;
+    }
+    .navbar{   
+        --#{$prefix}navbar-padding-x: 20px;
+        --#{$prefix}navbar-padding-y: 20px;
+        border-radius: 15px !important;       
+        backdrop-filter: blur(25px);
+        @include media-breakpoint-down(xxl) {              
+            --#{$prefix}navbar-padding-y: 12px;                              
+        }
+    }
+    .navbar-toggler{
+        --#{$prefix}navbar-toggler-padding-x: 0;
+        border: 0;
+        &:focus{
+            text-decoration: none;
+            outline: none;
+            box-shadow: none;
+        }            
+    }
+    &.sticky{
+        margin: 10px 0 0 0;  
+        .navbar{
+            --#{$prefix}navbar-padding-y: 6px;
+        }
+    } 
+}
+// ======================== Header-5 ==========================>>>>
+
+
+// ======================== Header-7 ==========================>>>>
+.header-landing{       
+    background: transparent;
+    .navbar{   
+        --#{$prefix}navbar-padding-x: 40px;
+        --#{$prefix}navbar-padding-y: 24px;
+        --#{$prefix}navbar-hover-color: var(--#{$prefix}primary);
+        --#{$prefix}navbar-active-color:var(--#{$prefix}secondary); 
+        --#{$prefix}navbar-color: var(--#{$prefix}heading-color);          
+        
+        .nav-link{
+            --#{$prefix}nav-link-font-weight: 600;
+            --#{$prefix}nav-link-font-size: 1rem;
+            --#{$prefix}navbar-nav-link-padding-x :0;
+            text-transform: uppercase;
+        }
+        .navbar-toggler{
+            --#{$prefix}navbar-toggler-padding-x: 0;
+            border: 0;
+            &:focus{
+                text-decoration: none;
+                outline: none;
+                box-shadow: none;
+            }            
+        }
+        @include media-breakpoint-down(lg) {              
+            --#{$prefix}navbar-padding-y: 12px;
+            --#{$prefix}navbar-padding-x: 8px;                   
+        }
+    }      
+
+    &.sticky{  
+        .navbar{
+            --#{$prefix}navbar-padding-x: 8px;
+            --#{$prefix}navbar-padding-y: 8px;
+        }
+        box-shadow: rgba(255, 255, 255, 0.13) 0px 1px 5px;
+        background-color: #f5f5f5;        
+    }           
+}
+// ======================== Header-7 ==========================>>>>
+
+.ordered-list-header{
+    .single-pages-dropdown{
+        .dropdown-menu[data-bs-popper] {
+            margin-top: 0;
+        }
+        .dropdown-toggle::after{
+            position: relative;
+            bottom: 16px;
+            right: -20px;
+        }
+    }
+}

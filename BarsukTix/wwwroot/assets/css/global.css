@@ -1,0 +1,92 @@
+body {
+  overflow-x: hidden;
+  padding-right: 0 !important;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.home-1 {
+  --bs-primary: #B20D5D;
+  --bs-body-color: #D2D2D2;
+}
+
+.menu-list {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 30px;
+}
+
+.custom-roboto {
+  font-family: 'roboto';
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.btn {
+  --bs-btn-padding-x: 2.4rem;
+  --bs-btn-padding-y: 0.75rem;
+  --bs-btn-font-size: 1rem;
+  --bs-btn-font-weight: 600;
+  --bs-btn-font-family: Roboto;
+  --bs-btn-border-radius: 10px;
+}
+
+.btn-primary {
+  --bs-btn-color: #D2D2D2;
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-color: #D2D2D2;
+  --bs-btn-hover-bg: var(--bs-black);
+  --bs-btn-hover-border-color: var(--bs-primary);
+}
+
+.navbar {
+  --bs-navbar-padding-x: 20px;
+  --bs-navbar-padding-y: 20px;
+  --bs-navbar-color: var(--bs-body-color);
+  --bs-navbar-hover-color: var(--bs-primary);
+  --bs-navbar-active-color:var(--bs-body-color);
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  --bs-navbar-toggler-border-color: var(--bs-body-color);
+  border-radius: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(38, 31, 48, 0.6);
+  box-shadow: 8px 5px 21px 18px rgba(0, 0, 0, 0.39);
+  backdrop-filter: blur(25px);
+}
+
+.navbar .nav-link {
+  --bs-nav-link-font-weight: 600;
+  --bs-nav-link-font-size: 1rem;
+  --bs-navbar-nav-link-padding-x:0;
+  text-transform: uppercase;
+}
+
+.offcanvas {
+  position: fixed;
+  bottom: 0;
+  z-index: var(--bs-offcanvas-zindex);
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  color: var(--bs-offcanvas-color);
+  visibility: hidden;
+  background-color: var(--bs-dark);
+  background-clip: padding-box;
+  outline: 0;
+  transition: var(--bs-offcanvas-transition);
+}
+
+.offcanvas-sm, .offcanvas-md, .offcanvas-lg, .offcanvas-xl, .offcanvas-xxl, .offcanvas {
+  --bs-offcanvas-zindex: 1045;
+  --bs-offcanvas-width: 400px;
+  --bs-offcanvas-height: 30vh;
+  --bs-offcanvas-padding-x: 1rem;
+  --bs-offcanvas-padding-y: 1rem;
+  --bs-offcanvas-color: var(--bs-white);
+}
+
+/*# sourceMappingURL=global.css.map */

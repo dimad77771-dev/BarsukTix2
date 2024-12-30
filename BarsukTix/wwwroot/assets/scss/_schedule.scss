@@ -1,0 +1,194 @@
+
+
+// ======================== Schedule-1 ==========================>>>>
+.schedule-section{
+    --#{$prefix}custom-inner-bg: rgba(38, 31, 48, 0.22);
+    --#{$prefix}custom-inner-border-color: rgba(255, 255, 255, 0.11);
+    --#{$prefix}custom-inner-shadow-color: rgba(0, 0, 0, 0.39);   
+}
+
+.schedule-1{       
+    --#{$prefix}scheduletabs-active-bg: #f6f4f9;  
+    --#{$prefix}schedule-color-light : #5B5C66;
+    .ellipse-image-2,.ellipse-image-3,.ellipse-image-7{
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-right: -130px;
+        margin-top: 75px;
+        z-index: -1;
+        animation: move-y 4s infinite  alternate;
+        @include media-breakpoint-down(md) {
+            margin-right: 0;
+            margin-top: -40px;  
+        }        
+    }
+}
+
+.schedule-left-content{
+    position: relative;
+    .ellipse-image-1{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-right: -50px;
+        z-index: -1;
+        animation: move-y 4s infinite  alternate;
+        @include media-breakpoint-down(md) {
+            top: 0;
+            bottom: auto;
+            margin-right: 0;
+            margin-top: 55px;
+        }        
+    }
+}
+
+.schedule-time{    
+    min-width: 148px;
+    word-wrap: break-word;
+}
+
+.schedule-tabs-content{
+    li{
+        border-bottom: 2px solid var(--#{$prefix}custom-inner-border-color);
+        padding-bottom: 22px;
+        &:last-child{
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+    }
+}
+
+.schedule-tabs{     
+    backdrop-filter: blur(5px); 
+    padding: 20px;
+    @include media-breakpoint-down(lg) {
+        padding: 16px 22px;   
+    }
+    @include media-breakpoint-down(md) {
+        padding: 12px;   
+    }
+    .schedule-button{
+        --#{$prefix}schedule-buttons-padding: 18px 60px;
+        background: transparent;
+        border: 0;
+        padding: var(--#{$prefix}schedule-buttons-padding);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        span{
+            color: var(--#{$prefix}schedule-color-light);
+        }
+        &.active{
+            border-radius: 25px;
+            background: var(--#{$prefix}scheduletabs-active-bg); 
+            span{
+                color: var(--#{$prefix}heading-color);
+            }
+            @include media-breakpoint-down(md) {
+                border-radius: 20px;   
+            }
+        }
+        @include media-breakpoint-down(lg) {
+             --#{$prefix}schedule-buttons-padding: 17px 40px;   
+        }
+        @include media-breakpoint-down(md) {
+             --#{$prefix}schedule-buttons-padding: 10px 18px;   
+        }
+    }
+    @media screen and (min-width: 992.1px) and (max-width: 1200px){
+        .schedule-button{
+             --#{$prefix}schedule-buttons-padding: 18px 24px;
+        }
+    }
+    @media screen and (min-width: 1201.1px) and (max-width: 1399.9px){
+        .schedule-button{
+             --#{$prefix}schedule-buttons-padding: 18px 40px;
+        }
+    }
+}
+
+.schedule-image{    
+    --bg-mask-image: url(../images/home-1/schedule-image-1.png);
+}
+
+// ======================== Schedule-1 ==========================>>>>
+
+
+// ======================== Schedule-2 ==========================>>>>
+.schedule-wrapper{    
+    backdrop-filter: blur(25px);  
+    li{
+        display: flex;
+        flex-direction: row;
+        gap: 70px;
+        flex: 0 0 auto;
+        padding: 30px;
+        border-bottom: 2px solid var(--#{$prefix}custom-inner-border-color);
+        &:last-child{
+            border-bottom: 0;
+        }
+
+        @include media-breakpoint-down(sm) {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+    }
+}
+
+.schedule-date{
+    position: relative;
+    left: 20px;
+    &:before{
+        content: "";
+        position: absolute;
+        width: 3px;
+        height: 80px;
+        background: var(--#{$prefix}primary);
+        left: -20px;
+        top: 0;
+    }
+}
+
+.schedule-author{    
+    max-width: 80px;    
+    img{
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+    }
+}
+// ======================== Schedule-2 ==========================>>>>
+
+
+
+// ======================== Schedule-3 ==========================>>>>
+.schedule-style-3{
+    --#{$prefix}scheduletabs-active-bg: #F6F4F9;
+    --#{$prefix}custom-inner-border-color : rgba(104, 102, 102, 0.30);
+    --#{$prefix}custom-inner-bg :rgba(255, 255, 255, 0.10);
+    --#{$prefix}custom-inner-shadow-color : rgba(0, 0, 0, 0.10);
+    .schedule-tabs{
+        border-radius: 30px;
+        border: 0;
+        background: var(--#{$prefix}custom-inner-bg);
+        box-shadow: 1px 0px 39px 0px var(--#{$prefix}custom-inner-shadow-color);
+    }
+}
+// ======================== Schedule-3 ==========================>>>>
+
+// ======================== invited-guests ==========================>>>>
+.invited-guests {
+    // @include rfs($tooltip-font-size, --#{$prefix}tooltip-font-size);
+    --#{$prefix}tooltip-font-size: inherit;
+    --#{$prefix}tooltip-color: var(--#{$prefix}primary);
+    --#{$prefix}tooltip-bg: #{$tooltip-bg};
+    --guest-size: 46px;
+    li img {
+        width: var(--guest-size);
+        height: var(--guest-size);
+        border-radius: 50%;
+    }
+}
+

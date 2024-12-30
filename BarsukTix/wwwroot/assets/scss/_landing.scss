@@ -1,0 +1,500 @@
+
+.eventiva-landing{
+    --#{$prefix}body-bg: #fff;   
+    --#{$prefix}body-color: #04000A;
+    --#{$prefix}body-color-light: #8EA3CA;  
+    --#{$prefix}secondary: #B20D5D;
+    --#{$prefix}secondary-rgb: 178, 13, 93;
+    --#{$prefix}primary: #4361EE;
+    --#{$prefix}primary-rgb: 67, 97, 238;  
+    --#{$prefix}link-hover-color-rgb: var(--#{$prefix}primary);
+}
+
+.landing-inner-bg{
+    --#{$prefix}landing-inner-bg: #f5f5f5;
+    background-color: var(--#{$prefix}landing-inner-bg);
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 1px 5px;
+}
+
+.check-circle-fill svg{
+    fill: transparent;
+}
+// ======================== Hero-landing ==========================>>>>
+.hero-landing{
+    position: relative;
+    --bg-parallax-image: url(../images/hero-landing-bg.png);    
+    --bg-parallax-opacity: 1;  
+    padding-top: 235px;
+    // padding-bottom: 300px;
+    @include media-breakpoint-down(lg) {
+        padding-top: 155px;
+        .hero-landing-image-3,.hero-landing-image-4,.hero-landing-image-5{
+            img{
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
+            }
+        }
+    }
+    @include media-breakpoint-down(sm) {
+        padding-top: 100px;
+    }
+    .hero-txt{
+        max-width: 960px;     
+        h1{
+            padding-bottom: 3px;
+        }  
+        .hero-text-inner{
+            color: var(--#{$prefix}body-color);
+            font-weight: 500;
+            font-size: 22px;
+            max-width: 800px;
+            @include media-breakpoint-down(lg) {
+                font-size: 16px;
+            }
+        }
+    }       
+}
+.hero-landing-image-1{
+    position: absolute;
+    top: 110px;
+    right: 0;
+    z-index: -9;
+}
+.hero-landing-image-2{
+    position: absolute;
+    bottom: calc(50% - 176px);
+    right: 0;
+    z-index: -9;
+}
+// ======================== Hero-landing ==========================>>>>
+
+
+// ======================== Features-landing ==========================>>>>
+.features-landing{
+    --#{$prefix}features-heading-color: var(--#{$prefix}heading-color); 
+    --#{$prefix}features-body-color: #838490; 
+    
+    .features-image{
+        width: fit-content;
+      position: relative;
+    }
+    .features-icon{
+        position: absolute;
+        left: calc(50% - 20px);
+        top: calc(50% - 20px);
+    }
+    .features-heading{        
+        color: var(--#{$prefix}features-heading-color);
+        font-family: var(--#{$prefix}font-family-style-4);
+        font-size: 22px;
+        font-weight: 700;
+    }
+    .features-text{
+        color: var(--#{$prefix}features-body-color);
+        font-family: var(--#{$prefix}font-family-style-4);
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 0;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+    .circle-features{
+        svg{
+            fill: transparent;
+        }
+    }
+}
+.sticky-header{
+    position: sticky;
+    top: 80px;
+    @include media-breakpoint-down(lg) {
+        position: relative;
+        top: 0;
+    }
+}
+// ======================== Features-landing ==========================>>>>
+
+
+
+// ======================== Technologies ==========================>>>>
+.technologies-wrapper{
+    --#{$prefix}technologies-heading-color: #617AA8;
+    --#{$prefix}technologies-text-color: #8EA3CA;  
+    
+    .technologies-heading{
+        color: var(--#{$prefix}technologies-heading-color);
+        font-family: var(--#{$prefix}font-family-style-4);
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 500;
+        margin-bottom: 0; 
+        @include media-breakpoint-down(lg) {
+            font-size: 18px;
+        }
+    } 
+    .technologies-text{
+        color: var(--#{$prefix}technologies-text-color);
+        font-family: var(--#{$prefix}font-family-style-4);
+        font-size: 26px;
+        font-weight: 500; 
+        line-height: 148.5%;
+        letter-spacing: 0.26px;
+        @include media-breakpoint-down(lg) {
+            font-size: 16px;
+        }
+    }     
+}
+
+.technologies-sm{
+    width: 230px;
+    height: 235px; 
+    padding: 24px 30px;
+    text-align: center;
+    @include media-breakpoint-down(lg) {
+        width: 162px;
+        height: 168px;
+        padding: 8px 10px;            
+    }
+} 
+
+.technologies-md{
+    width: 515px;
+    height: 230px;
+    padding: 24px 0 24px 36px;
+    position: relative;
+    overflow: hidden;        
+    .technologies-gradient-text{
+        position: absolute;
+        max-width: 300px;
+        bottom: 15px;        
+        letter-spacing: .1px;
+        line-height: 93.5%;
+        padding-bottom: 12px;
+        margin-bottom: 0;
+        max-width: 285px;
+    }
+    .text-gradient{   
+        background: linear-gradient(90deg, var(--#{$prefix}primary) 8.83%, var(--#{$prefix}secondary) 59.83%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; 
+        &.text-gradient-style-2{
+            --#{$prefix}primary: #FCA311;                
+        }          
+    }        
+    .technologies-huge-text{
+        background: linear-gradient(180deg, var(--#{$prefix}technologies-heading-color) -108.04%, rgba(97, 122, 168, 0.00) 94.64%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; 
+        font-family: var(--#{$prefix}font-family-style-4);
+        font-size: 150px;
+        font-weight: 800; 
+        position: relative;
+        top: -38px;
+    }
+    img{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    @include media-breakpoint-down(lg) {
+        width: 335px;
+        height: 210px;
+        padding: 15px 0 22px 20px;  
+        .technologies-gradient-text{                
+            max-width: 205px;
+        }         
+    }
+}
+
+.technologies-lg{
+    width: 800px;
+    height: 500px;
+    position: relative;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    &::after{
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-image: url(../images/technologies-lg-mask.png);
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+    }        
+    .technologies-lg-content{
+        position: relative;
+        z-index: 9;
+    }
+    .text-gradient{
+        background: linear-gradient(90deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; 
+        &.text-gradient-style-2{
+            --#{$prefix}primary: #FCA311;                
+        }
+    }
+    .technologies-lg-image{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    .technologies-lg-heading{
+        font-size: 100px;        
+    }
+    .custom-badge{
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 8px;
+        margin-right: 56px;
+        background: #4361EE;
+        width: 55px;
+        height: 55px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-family: var(--#{$prefix}font-family-style-4);
+        font-size: 18px;
+        font-weight: 600; 
+        color: #fff;
+        @include media-breakpoint-down(xxl) {
+            margin-top: 13px;
+            margin-right: -23px;
+        }
+        @include media-breakpoint-down(lg) {
+            margin-top: 0px;
+            margin-right: 18px;
+            width: 30px;
+            height: 30px;
+            font-size: 10px;
+        }
+    }
+
+    @include media-breakpoint-down(lg) {
+        width: 335px;
+        height: 210px;
+        padding: 30px;
+        .frame-image{
+            width: 35px;
+        }
+        .technologies-lg-heading{
+            font-size: 38px;
+        }
+    }
+} 
+    //=======================================================Update
+    @media (min-width: 992px) and (max-width: 1199.9px){
+        .technologies-sm {
+            width: 188px;
+            height: 226px;     
+            padding: 24px 16px;  
+        }
+        .technologies-wrapper .technologies-heading{
+            font-size: 19px;
+        }
+        .technologies-lg {
+            width: 500px;
+            height: 480px;
+        }
+        .technologies-wrapper .technologies-text {
+            font-size: 21px;
+        }
+        .technologies-lg .technologies-lg-heading{
+            font-size: 86px;
+        }
+    }
+    //=======================================================Update
+
+
+// ======================== Technologies ==========================>>>>
+
+
+// ======================== Demos ==========================>>>>
+.demos{   
+    h2{
+        padding-bottom: 2px;
+    } 
+    p{        
+        padding: 0 15%;
+        margin: 20px 0 0;
+        font-weight: 300;
+        font-size: 24px;
+        @include media-breakpoint-down(lg) {
+            padding: 0;
+            font-size: 20px;
+        }
+    }
+    .demo-title {
+        --#{$prefix}demo-title-color: var(--#{$prefix}heading-color);
+        color: var(--#{$prefix}demo-title-color);        
+        font-weight: 800;
+        font-size: 22px;
+        line-height: 1;      
+        font-family: var(--#{$prefix}font-family-style-4);
+        position: relative;
+        top: 22px;  
+        transition: all 400ms ease-in-out;
+    }    
+    .demo-image{
+        position: relative;
+        top: 0;
+        transition: all 400ms ease-in-out;       
+        padding: 40px 16px 40px 16px;
+        .dots{
+            position: absolute;
+            top: 8px;
+        }
+        &:hover{
+            top: -12px;  
+            .demo-title{
+                background: linear-gradient(96deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent; 
+                -webkit-text-stroke: 0;
+            }          
+        }
+    }
+}
+// ======================== Demos ==========================>>>>
+
+
+// ======================== Loading-Section ==========================>>>>
+.loading-wrapper{
+    --#{$prefix}loading-text-color: var(--#{$prefix}heading-color);
+    --#{$prefix}category-bg : #0DB10A;
+    .category{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 31px; 
+        background-color: var(--#{$prefix}category-bg);
+        border-radius: 8px;
+        color: #fff;
+        font-family: var(--#{$prefix}font-family-style-4);
+        font-size: 18px;
+        font-weight: 500; 
+    }
+}
+.loading-heading{
+    color: var(--#{$prefix}loading-text-color);
+    font-family: var(--#{$prefix}font-family-style-4);
+    font-size: 45px;
+    font-weight: 700;
+}
+.loading-desciption{
+    color: var(--#{$prefix}loading-text-color);
+    font-family: var(--#{$prefix}font-family-style-4);
+    font-size: 19px;
+    font-weight: 500;
+    max-width: 130px;
+}
+
+.loading-progress{
+    --progress-bg: rgba(0, 0, 0, 0.1);
+    --progress-gradient: linear-gradient(90deg, #B20D5D 1.72%, #FCA311 99.9%); 
+}
+.progress {
+    border-radius: 40px;
+    width: 330px;    
+    background-color: var(--progress-bg);
+    height: 20px;
+    position: relative; 
+    .progress-bar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        white-space: nowrap;
+        margin: 4px;
+        border-radius: 40px;    
+        background-image: var(--progress-gradient);
+        animation: progressAnimation-1 8s; 
+        &.progress-bar-2{
+            animation: progressAnimation-2 8s; 
+        }
+    }   
+}
+
+
+
+// ======================== Loading-Section ==========================>>>>
+
+
+// ======================== Pricing-Section ==========================>>>>
+.pricing-landing-wrapper{
+    --#{$prefix}pricing-text-color: var(--#{$prefix}heading-color);
+    .separator{
+        max-width: 434px;
+    }
+}
+.pricing-heading{
+    color: var(--#{$prefix}pricing-text-color);
+    font-family: var(--#{$prefix}font-family-style-4);
+    font-size: 60px;
+    font-weight: 700;
+    @include media-breakpoint-down(xxl) {
+        font-size: 52px;
+    }
+    //=======================================================Update
+    @include media-breakpoint-down(xl) {
+        font-size: 50px;
+    }
+    //=======================================================Update
+    @include media-breakpoint-down(lg) {
+        font-size: 40px;
+    }
+    @include media-breakpoint-down(md) {
+        font-size: 30px;
+    }
+}
+.pricing-amount{
+    color: var(--#{$prefix}pricing-text-color);
+    font-family: var(--#{$prefix}font-family-style-4);
+    font-weight: 700;    
+}
+.pricing-landing-image{
+    transform: translatey(0px);
+	animation: landing-image-floating 5s ease-in-out infinite;
+    position: relative;
+    top: 12.5px;
+}
+
+// ======================== Pricing-Section ==========================>>>>
+
+.demos-section {
+    .active {
+        &.btn-outline-gradient {
+            &::after {
+                background-image: linear-gradient(90deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%) !important;
+                color: var(--#{$prefix}btn-active-color);
+            }
+            .text-gradient {
+                background: none;
+                -webkit-text-fill-color: #fff;
+            }
+        }
+    }
+    .btn-outline-gradient.btn-gradient-style-2:hover::after,
+    .btn-outline-gradient.btn.btn-gradient-style-2:hover::after {
+        background-image: linear-gradient(90deg, var(--#{$prefix}primary) 0%, var(--#{$prefix}secondary) 100%) !important;
+        color: var(--#{$prefix}btn-active-color);
+    }
+    .btn-outline-gradient.btn-gradient-style-2:hover,
+    .btn-outline-gradient.btn.btn-gradient-style-2:hover {
+        .text-gradient {
+            background: none;
+            -webkit-text-fill-color: #fff;
+        }
+    }
+}

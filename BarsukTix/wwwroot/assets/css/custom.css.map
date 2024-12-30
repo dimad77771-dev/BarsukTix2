@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "custom.css",
+	"sources": [
+		"../scss/custom.scss"
+	],
+	"sourcesContent": [
+		"// ============================Spacers\r\n$spacer: 1rem;\r\n$spacers: (\r\n  0: 0,\r\n  1: $spacer * .25,\r\n  2: $spacer * .5,\r\n  3: $spacer,\r\n  4: $spacer * 1.5,\r\n  5: $spacer * 2,\r\n  10: $spacer * .625,\r\n  15: $spacer * .9375,\r\n  20: $spacer * 1.25,\r\n  30: $spacer * 1.875,\r\n  40: $spacer * 2.5,\r\n  50: $spacer * 3.125,  \r\n  60: $spacer * 3.75,\r\n  70: $spacer * 4.375,\r\n  80: $spacer * 5,\r\n  90: $spacer * 5.625,\r\n  100: $spacer * 6.25,\r\n  120: $spacer * 7.5,\r\n  130: $spacer * 8.125,\r\n  140: $spacer * 8.75,\r\n  150: $spacer * 9.375,\r\n  180: $spacer * 11.25,\r\n  200: $spacer * 12.5,\r\n  220: $spacer * 13.75,\r\n  230: $spacer * 14.375,\r\n  250: $spacer * 15.625,\r\n  300: $spacer * 18.75\r\n);\r\n// $primary: #B20D5D;\r\n$form-switch-checked-bg-image : linear-gradient(276deg, var(--bs-primary) 0%, var(--bs-secondary) 100%);\r\n// Colors\r\n\r\n$gray-900: #04000A;  // $dark=$gray-900 (variables-308)\r\n\r\n// Typography\r\n$font-family-sans-serif:  'Open Sans', 'Roboto', 'Plus Jakarta Sans', 'Poppins' , sans-serif;\r\n$headings-font-family:    'Open Sans' , sans-serif;\r\n\r\n// ==============Font Sizes\r\n$font-size-base: 1rem;\r\n\r\n \r\n$h1-font-size:                $font-size-base * 2.1875; //35px\r\n$h2-font-size:                $font-size-base * 1.875; //30px\r\n$h3-font-size:                $font-size-base * 1.5; //24px\r\n$h4-font-size:                $font-size-base * 1.25; //20px\r\n$h5-font-size:                $font-size-base * 1.125; //18px\r\n$h6-font-size:                $font-size-base; //16px\r\n\r\n$display-font-sizes: (\r\n  1: 5rem, //80px\r\n  2: 4.5rem, //72px\r\n  3: 3.75rem, //60px\r\n  4: 3.5rem, //56px\r\n  5: 3rem, //48px\r\n  6: 2.625rem  //42px\r\n);\r\n\r\n$lead-font-size:              $font-size-base * 1.25;\r\n$lead-font-weight:            400; \r\n\r\n$enable-negative-margins:     true;"
+	],
+	"names": [],
+	"mappings": ""
+}

@@ -1,0 +1,234 @@
+
+// ======================== LineUp-1 ==========================>>>>
+.lineup-contents{   
+    .ellipse-image-2{
+        position: absolute;
+        bottom: -45px;
+        left: -78px;
+        z-index: -999;
+        animation: move-x 4s infinite alternate;
+        @include media-breakpoint-down(sm) {
+            left: auto;
+            right: 0;
+            animation: move-y 4s infinite alternate;
+        }
+    }
+    .lineup-right-content{
+        max-width: 445px;
+        width: 100%;
+    }
+}
+
+.progress-gradient{
+    .swiper-pagination-progressbar .swiper-pagination-progressbar-fill{
+        background: linear-gradient(110deg, var(--#{$prefix}primary) 12%, var(--#{$prefix}secondary) 100%);
+    }
+}
+.swiper-custom-progress{
+    --swiper-theme-color: var(--#{$prefix}primary);
+    --swiper-pagination-line-color: #d9d9d9;
+    --#{$prefix}swiper-btn-next-color: var(--#{$prefix}heading-color);
+    --#{$prefix}swiper-btn-prev-color: rgba(var(--#{$prefix}heading-color-rgb),.5);
+
+    .swiper-button-progress{
+        svg{
+            fill: var(--#{$prefix}headings-color);
+        }
+    }
+    .swiper-button-prev,.swiper-button-next{
+        &.swiper-button-disabled{
+            opacity: 1;
+            cursor: pointer;
+            pointer-events: all;
+        }
+        &::after{
+            content: none;
+        }
+        bottom: -64px;
+        top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        span{
+            margin-top: -3px;
+        }
+        @include media-breakpoint-down(lg) {
+            bottom: -55px;            
+        }
+    }
+    .swiper-button-prev{
+        left: 0;
+        border-color: var(--#{$prefix}swiper-btn-prev-color);
+        transition: $transition-base;
+        svg{
+            fill: var(--#{$prefix}swiper-btn-prev-color);
+            transition: $transition-base;
+        }
+        &:hover{
+            border-color: var(--#{$prefix}primary);
+            svg{
+                fill: var(--#{$prefix}primary);
+            }
+        }
+        span{
+            margin-right: 2px; 
+        }
+    }
+    .swiper-button-next{
+        right: auto;
+        left: 40px; 
+        border-color: var(--#{$prefix}swiper-btn-next-color);
+        transition: $transition-base;
+        svg{
+            fill: var(--#{$prefix}swiper-btn-next-color);
+            transition: $transition-base;
+        }
+        &:hover{
+            border-color: var(--#{$prefix}primary);
+            svg{
+                fill: var(--#{$prefix}primary);
+            }
+        }
+        @include media-breakpoint-down(lg) { 
+            left: 6%;
+        }
+        @include media-breakpoint-down(md) {
+            left: 8%;
+        }
+
+    }
+    .lineup-swiper-pagination{
+        width: 89%; 
+        height: 2px;
+        left: 11%;  
+        top: auto;
+        bottom: -52px;
+        
+        @include media-breakpoint-down(xxl) {    
+            width: 88%; 
+            left: 12%; 
+        }
+        @include media-breakpoint-down(xl) {    
+            width: 86%; 
+            left: 14%; 
+        }
+        @include media-breakpoint-down(lg) {    
+            bottom: -43px;
+            left: 22%;
+            width: 77%;
+        }
+        &.swiper-pagination-progressbar{
+            background: var(--swiper-pagination-line-color);
+            border-radius: 10px;
+        }
+    }
+
+    &.progress-style-1{
+        --swiper-theme-color: var(--#{$prefix}primary);
+        --swiper-pagination-line-color : #D9D9D9;
+    }
+}
+.lineup-image-wrapper{
+    transition: all 0.5s ease-in-out;
+    .lineup-image-hover{
+        --#{$prefix}lineup-headings-color: #CECCDA;
+        transition: all 0.5s ease-in-out;
+        position: absolute;
+        bottom: -20px;
+        left: 16px;
+        h5{
+            color: var(--#{$prefix}lineup-headings-color);
+        }
+        .author-name{        
+            font-family: var(--#{$prefix}font-family-style-2);
+            font-size: 34px;
+            font-weight: 800; 
+            margin-bottom: 0;
+            line-height: 42px;
+            color: var(--#{$prefix}lineup-headings-color);
+            @include media-breakpoint-down(xxl) {
+                font-size: 24px;
+            }        
+        }        
+    }
+    
+    .lineup-image{
+        &::after{
+            content:'';
+            position:absolute;
+            left:0; 
+            top:0;
+            width:100%; 
+            height:100%;
+            display:inline-block;
+            border-radius: 30px;
+            background:linear-gradient(190deg, rgba(178, 13, 93, 0.00) 4.66%, rgba(21, 2, 64, 0.81) 86.28%);       
+        }
+        &.lineup-image-style-2{
+            &::after{                     
+                background:linear-gradient(174deg, rgba(178, 13, 93, 0.00) 46.95%, rgba(var(--#{$prefix}primary-rgb), .81) 103.38%);  
+            } 
+        }
+    }
+    img{
+        border-radius: 30px !important;
+        display: block;
+        width: 100%;
+    } 
+    .line-up-hover-content{
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+    
+    &:hover{
+        .lineup-image-hover{
+            bottom: 32px;
+        }
+        .line-up-hover-content{
+            visibility: visible;
+            opacity: 1;            
+        }
+    }
+    
+}
+
+.lineup-right-content{
+    .lineup-link{
+        text-decoration: none;
+        display: inline-block;
+        border-bottom: 1px solid ;
+    }
+    
+}
+
+.line-up-icons{
+    transition: $transition-base;  
+    --#{$prefix}lineup-icons-color: #CECCDA; 
+    a{
+        color: var(--#{$prefix}lineup-icons-color);
+        &:hover{
+            color: var(--#{$prefix}primary);
+        }
+    }    
+}
+// ======================== LineUp-1 ==========================>>>>
+
+.lineup-2 {
+    .ellipse-image-2,.ellipse-image-5,.ellipse-image-7{
+        position: absolute;
+        bottom: -45px;
+        left: -78px;
+        z-index: -999;
+        animation: move-x 4s infinite alternate;
+        @include media-breakpoint-down(sm) {
+            left: auto;
+            right: 0;
+            animation: move-x 4s infinite alternate;
+        }
+    }
+}
