@@ -48,8 +48,14 @@ namespace BarsukTix.Controllers
 			return View();
 		}
 
-		[Route("Ticket")]
+		[Route("ticket")]
 		public IActionResult Ticket()
+		{
+			return View();
+		}
+
+		[Route("payment")]
+		public IActionResult Payment()
 		{
 			return View();
 		}
