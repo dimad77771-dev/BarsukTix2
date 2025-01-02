@@ -27,7 +27,7 @@
             </div>
 
             <div class="contact-us-form">
-                <form action="/buyer">
+                <form action="/postTicket" method="post">
                     <div class="row gx-5 gy-4 gy-lg-5">
 
                         @foreach (var category in Model.Categories)
@@ -40,7 +40,7 @@
                                 </span>
                             </div>
                             <div class="col-lg-3">
-                                <select class="form-control" id="@category.RowId">
+                                <select class="form-control" name="@category.RowId" id="@category.RowId">
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
