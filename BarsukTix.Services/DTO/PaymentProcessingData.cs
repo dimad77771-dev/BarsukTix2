@@ -14,7 +14,7 @@ namespace BarsukTix.Services.DTO
 		public string? date { get; set; }
 		public string? time { get; set; }
 		public string? type { get; set; }
-		public decimal? amount { get; set; }
+		public string? amount { get; set; }
 		public string? cardHolderName { get; set; }
 		public string? cardNumber { get; set; }
 		public string? cardExpiry { get; set; }

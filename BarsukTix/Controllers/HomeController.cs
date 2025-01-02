@@ -2,6 +2,8 @@ using System.Diagnostics;
 using BarsukTix.Models;
 using BarsukTix.Services.DTO;
 using BarsukTix.Services.Implementations;
+using BarsukTix.Web.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BarsukTix.Controllers
@@ -64,12 +66,13 @@ namespace BarsukTix.Controllers
 			return View();
 		}
 
+        //[Authorize]
         [HttpPost]
 		[Route("PaymentProcessing")]
 		public IActionResult PaymentProcessing(PaymentProcessingData data)
 		{
-            var userId = User.Identity?.Name;
-			_ticketService.PaymentProcessing(data);
+            var userId = this.GetUserId();
+            _ticketService.PaymentProcessing(data, userId);
 			return View("Index");
 		}
 

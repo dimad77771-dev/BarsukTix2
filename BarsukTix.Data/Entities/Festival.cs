@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BarsukTix.Data.EntitiesYYY;
+namespace BarsukTix.Data.Entities;
 
 public partial class Festival
 {

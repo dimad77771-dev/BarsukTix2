@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BarsukTix.Common;
 using Microsoft.EntityFrameworkCore;
 
-namespace BarsukTix.Data.EntitiesYYY;
+namespace BarsukTix.Data.Entities;
 
 public partial class BarsukTixDB : DbContext
 {
