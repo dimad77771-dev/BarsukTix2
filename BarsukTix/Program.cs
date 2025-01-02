@@ -1,4 +1,6 @@
+using BarsukTix.Common;
 using BarsukTix.Data;
+using BarsukTix.Services.Implementations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,10 +27,14 @@ namespace BarsukTix
                .AddGoogle(options =>
                {
                    IConfigurationSection googleAuthNSection = configuration.GetSection("Authentication:Google");
-                   options.ClientId = googleAuthNSection["ClientId"];
-                   options.ClientSecret = googleAuthNSection["ClientSecret"];
+                   options.ClientId = googleAuthNSection["ClientId"] ?? "";
+                   options.ClientSecret = googleAuthNSection["ClientSecret"] ?? "";
                    //options.Au
                });
+
+			builder.Services.AddTransient<TicketService, TicketService>();
+
+            BarsukTixSettings.ConnectionString = configuration.GetConnectionString("DefaultConnection");
 
 
             var app = builder.Build();

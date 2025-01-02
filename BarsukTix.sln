@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarsukTix.Data", "BarsukTix
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarsukTix.Services", "BarsukTix.Services\BarsukTix.Services.csproj", "{0C040DC8-8E77-43BD-B06B-23A8195AF25A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarsukTix.Common", "BarsukTix.Common\BarsukTix.Common.csproj", "{D855EBA1-BC51-40B4-B7A9-C3972FDBF2A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0C040DC8-8E77-43BD-B06B-23A8195AF25A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C040DC8-8E77-43BD-B06B-23A8195AF25A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C040DC8-8E77-43BD-B06B-23A8195AF25A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D855EBA1-BC51-40B4-B7A9-C3972FDBF2A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D855EBA1-BC51-40B4-B7A9-C3972FDBF2A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D855EBA1-BC51-40B4-B7A9-C3972FDBF2A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D855EBA1-BC51-40B4-B7A9-C3972FDBF2A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

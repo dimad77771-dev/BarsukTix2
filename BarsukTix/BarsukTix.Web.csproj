@@ -17,4 +17,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BarsukTix.Common\BarsukTix.Common.csproj" />
+    <ProjectReference Include="..\BarsukTix.Data\BarsukTix.Data.csproj" />
+    <ProjectReference Include="..\BarsukTix.Services\BarsukTix.Services.csproj" />
+  </ItemGroup>
+
 </Project>

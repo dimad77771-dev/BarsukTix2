@@ -1,7 +1,13 @@
 ﻿@{
-    //ViewData["Title"] = "Buy Ticket";
-    Layout = null;
+    ViewData["Title"] = "Buy Ticket";
 }
+
+<html>
+
+<!--SCRIPT-->
+// Included in the head element of your website
+<script type="text/javascript" src="https://secure.myhelcim.com/js/version2.js"></script>
+
 
 <div class="main" data-bs-spy="scroll" data-bs-target="#navContentmenu" data-bs-root-margin="0px 0px -50%" data-bs-smooth-scroll="true">
 
@@ -29,7 +35,7 @@
             </div>
             
             <div class="contact-us-form">
-                <form name="helcimForm" id="helcimForm" action="your-checkout-page.php" method="POST">
+                <form name="helcimForm" id="helcimForm" action="PaymentProcessing" method="POST">
                     <div class="row gx-5 gy-4 gy-lg-5">
                         <div id="helcimResults"></div>
                         <input type="hidden" id="token" value="f5bad81720838e432e0e8b">
@@ -93,7 +99,7 @@
 
 
                         <div class="col-12">
-                            <button type="submit" class="btn btn-gradient d-inline-flex" aria-label="buttons" onclick="javascript:helcimProcess();">Process</button>
+                            <button type="button" class="btn btn-gradient d-inline-flex" aria-label="buttons" onclick="javascript:helcimProcess();">Process</button>
                         </div>
                     </div>
                     
@@ -106,3 +112,5 @@
     <!--Contact Section ======================-->
 
 </div>
+
+</html>

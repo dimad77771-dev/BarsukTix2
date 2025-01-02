@@ -10,4 +10,12 @@
     <Folder Include="Entities\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BarsukTix.Common\BarsukTix.Common.csproj" />
+  </ItemGroup>
+
 </Project>
