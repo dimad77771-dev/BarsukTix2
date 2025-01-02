@@ -17,7 +17,7 @@
                     </div>
                     <!-- section-title -->
                 </div>
-                <div class="col-lg-5">
+                <div class="col-lg-5 d-none">
                     <div class="highlights-text">
                         <p class="custom-roboto text-lg-end">
                             Immerse in mesmerizing performances,vibrant soundscapes,and interactive art at our music extravaganza. Experience a festival atmosphere like no other, where unforgettable moments.
@@ -28,18 +28,18 @@
 
             <div class="contact-us-form">
                 <form action="/postTicket" method="post">
-                    <div class="row gx-5 gy-4 gy-lg-5">
+                    <div class="row gx-5 gy-4 gy-lg-5 col-lg-6">
 
                         @foreach (var category in Model.Categories)
                         {
-                            <div class="col-lg-9">
+                            <div class="col-lg-8">
                                 <span>
                                     @category.CategoryName
                                     <br />
                                     @category.Price.ToString("$0.00")
                                 </span>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-4">
                                 <select class="form-control" name="@category.RowId" id="@category.RowId">
                                     <option value="0">0</option>
                                     <option value="1">1</option>
@@ -58,6 +58,11 @@
 
                         <div class="col-12">
                             <button type="submit" class="btn btn-gradient d-inline-flex" aria-label="buttons">Next</button>
+                        </div>
+                        <div class="col-12">
+                            <p class="text-danger">
+                                @Model.ErrorText
+                            </p>
                         </div>
                     </div>
                 </form>

@@ -27,6 +27,12 @@ public partial class Ticket
 
     public string? AddressState { get; set; }
 
+    public decimal TotalAmount { get; set; }
+
+    public bool IsReadyPayment { get; set; }
+
+    public bool IsPaid { get; set; }
+
     public virtual ICollection<TicketCategory> TicketCategories { get; set; } = new List<TicketCategory>();
 
     public virtual AspNetUser User { get; set; } = null!;

@@ -31,32 +31,42 @@ namespace BarsukTix.Services.Implementations
 
             var oldTicketCategories = db.TicketCategories.Where(x => x.TicketRowId == ticket.RowId).ToArray();
             var newTicketCategories = data.Select(x => new TicketCategory{CategoryRowId = x.Key, Quantity = x.Value }).ToArray();
-            foreach(var newTicketCategory in newTicketCategories)
+            var totalQuantity = newTicketCategories.Sum(x => x.Quantity);
+            if (totalQuantity > 0) 
             {
-                var oldTicketCategory = oldTicketCategories.SingleOrDefault(x => x.CategoryRowId == newTicketCategory.CategoryRowId);
-                if (oldTicketCategory == null)
+                foreach (var newTicketCategory in newTicketCategories)
                 {
-                    newTicketCategory.RowId = Guid.NewGuid();
-                    newTicketCategory.TicketRowId = ticket.RowId;
-                    db.TicketCategories.Add(newTicketCategory);
+                    var oldTicketCategory = oldTicketCategories.SingleOrDefault(x => x.CategoryRowId == newTicketCategory.CategoryRowId);
+                    if (oldTicketCategory == null)
+                    {
+                        newTicketCategory.RowId = Guid.NewGuid();
+                        newTicketCategory.TicketRowId = ticket.RowId;
+                        db.TicketCategories.Add(newTicketCategory);
+                    }
+                    else
+                    {
+                        oldTicketCategory.Quantity = newTicketCategory.Quantity;
+                    }
                 }
-                else
+                var delTicketCategories = oldTicketCategories.Where(x => !newTicketCategories.Any(z => z.CategoryRowId == x.CategoryRowId)).ToList();
+                delTicketCategories.ForEach(x => db.TicketCategories.Remove(x));
+
+                db.SaveChanges();
+
+                var result = new BuyerViewModel
                 {
-                    oldTicketCategory.Quantity = newTicketCategory.Quantity;
-                }
+                    Ticket = ticket,
+                    Categories = db.Categories.OrderBy(x => x.SequenceNumber).ToArray(),
+                };
+                return result;
             }
-            var delTicketCategories = oldTicketCategories.Where(x => !newTicketCategories.Any(z => z.CategoryRowId == x.CategoryRowId)).ToList();
-            delTicketCategories.ForEach(x => db.TicketCategories.Remove(x));
-
-            db.SaveChanges();
-
-            var result = new BuyerViewModel
+            else
             {
-                Ticket = ticket,
-                Categories = db.Categories.OrderBy(x => x.SequenceNumber).ToArray(),
-            };
-
-            return result;
+                var result = GetTicketViewModel(userId);
+                result.TicketCategories.ForEach(x => x.Quantity = newTicketCategories?.SingleOrDefault(z => z.CategoryRowId == x.CategoryRowId)?.Quantity ?? 0);
+                result.ErrorText = "The total must be greater than zero";
+                return result;
+            }
         }
 
         public TicketViewModel GetTicketViewModel(string userId)
@@ -67,6 +77,7 @@ namespace BarsukTix.Services.Implementations
             var result = new TicketViewModel
             {
                 Ticket = row,
+                TicketCategories = row?.TicketCategories?.ToList() ?? new List<TicketCategory>(),
                 Categories = db.Categories.OrderBy(x => x.SequenceNumber).ToArray(),
             };
 

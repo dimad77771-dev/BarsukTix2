@@ -10,6 +10,8 @@ namespace BarsukTix.Services.DTO
     public class TicketViewModel
     {
         public Ticket? Ticket { get; set; }
+        public required List<TicketCategory> TicketCategories { get; set; }
         public required Category[] Categories { get; set; }
+        public string? ErrorText { get; set; }
     }
 }
