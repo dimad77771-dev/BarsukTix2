@@ -1,4 +1,5 @@
-﻿@{
+﻿@model BarsukTix.Services.DTO.TicketViewModel
+@{
     ViewData["Title"] = "Buy Ticket";
 }
 
@@ -24,73 +25,44 @@
                     </div>
                 </div>
             </div>
-            <!-- row -->
+
             <div class="contact-us-form">
-                <form action="/buy">
+                <form action="/buyer">
                     <div class="row gx-5 gy-4 gy-lg-5">
 
-                        <div class="col-lg-9">
-                            <span>
-                                Adult Ticket
-                                <br/>
-                                $225.00
-                            </span>
-                        </div>
-                        <div class="col-lg-3">
-                            <select class="form-control" id="firstName">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-
-                        <div class="col-lg-9">
-                            <span>
-                                Student Ticket (Age 15-21)
-                                <br />
-                                $125.00
-                            </span>
-                        </div>
-                        <div class="col-lg-3">
-                            <select class="form-control" id="firstName">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-
-                        <div class="col-lg-9">
-                            <span>
-                                Child Ticket
-                                <br />
-                                $75.00
-                            </span>
-                        </div>
-                        <div class="col-lg-3">
-                            <select class="form-control" id="firstName">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
+                        @foreach (var category in Model.Categories)
+                        {
+                            <div class="col-lg-9">
+                                <span>
+                                    @category.CategoryName
+                                    <br />
+                                    @category.Price.ToString("$0.00")
+                                </span>
+                            </div>
+                            <div class="col-lg-3">
+                                <select class="form-control" id="@category.RowId">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                        }
 
                         <div class="col-12">
                             <button type="submit" class="btn btn-gradient d-inline-flex" aria-label="buttons">Next</button>
                         </div>
                     </div>
-                    <!-- row -->
                 </form>
             </div>
-            <!-- contact-us-form -->
         </div>
-        <!-- container -->
     </section>
-    <!--Contact Section ======================-->
 
 </div>

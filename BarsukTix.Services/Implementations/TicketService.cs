@@ -11,22 +11,40 @@ namespace BarsukTix.Services.Implementations
 {
 	public class TicketService
 	{
-		public bool PaymentProcessing(PaymentProcessingData data, string userId)
+        public TicketViewModel GetTicketViewModel(string userId)
+        {
+            var db  = GetDB();
+            var row = db.Tickets.SingleOrDefault(t => t.UserId == userId);
+
+            var result = new TicketViewModel
+            {
+                Ticket = row,
+                Categories = db.Categories.OrderBy(x => x.SequenceNumber).ToArray(),
+            };
+
+            return result;
+        }
+
+        public bool PaymentProcessing(PaymentProcessingData data, string userId)
 		{
             var db = GetDB();
 
             var amount = (decimal?)null;
             if (!string.IsNullOrEmpty(data.amount))
             {
-                if (decimal.TryParse(data.amount.Replace(",","."), NumberStyles.None, CultureInfo.InvariantCulture, out var amount2))
+                if (decimal.TryParse(data.amount.Replace(",","."), NumberStyles.Number, CultureInfo.InvariantCulture, out var amount2))
                 {
                     amount = amount2;
                 }
             }
 
             var responseDateTime = (DateTime?)null;
-            var formats = new[] { "hh:mm:ss" };
-            DateTime.TryParseExact(data.time, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out var time);
+            var result1 = DateTime.TryParseExact(data.time ?? "", new[] { "HH:mm:ss" }, CultureInfo.InvariantCulture, DateTimeStyles.None, out var responseTime);
+            var result2 = DateTime.TryParseExact(data.date ?? "", new[] { "yyyy-MM-dd" }, CultureInfo.InvariantCulture, DateTimeStyles.None, out var responseDate);
+            if (result1 && result2)
+            {
+                responseDateTime = responseDate.Date.Add(responseTime.TimeOfDay);
+            }
 
             var paymentProcessing = new PaymentProcessing
             {

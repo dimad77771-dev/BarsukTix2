@@ -157,6 +157,8 @@ public partial class BarsukTixDB : DbContext
         {
             entity.HasKey(e => e.RowId);
 
+            entity.HasIndex(e => e.UserId, "UK_Tickets").IsUnique();
+
             entity.Property(e => e.RowId).ValueGeneratedNever();
             entity.Property(e => e.AddressCity).HasMaxLength(1000);
             entity.Property(e => e.AddressLine).HasMaxLength(1000);

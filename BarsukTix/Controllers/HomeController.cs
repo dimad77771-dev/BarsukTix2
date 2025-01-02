@@ -48,16 +48,21 @@ namespace BarsukTix.Controllers
             return View();
         }
 
-		[Route("buyer")]
+        [HttpPost]
+        [HttpGet]
+        [Route("buyer")]
 		public IActionResult Buyer()
 		{
+            var a = Request.Form;
 			return View();
 		}
 
 		[Route("ticket")]
 		public IActionResult Ticket()
 		{
-			return View();
+            var userId = this.GetUserId();
+            var viewmodel = _ticketService.GetTicketViewModel(userId);
+            return View(viewmodel);
 		}
 
 		[Route("payment")]
