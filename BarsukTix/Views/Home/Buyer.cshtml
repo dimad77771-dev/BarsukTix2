@@ -5,42 +5,42 @@
 
 <style>
     table.summary tr.ticket_row td {
-    padding: 10px 10px 0 10px;
-    vertical-align: top;
+        padding: 10px 10px 0 10px;
+        vertical-align: top;
     }
 
     table.summary tr td, table.summary tr th {
-    padding: 10px;
+        padding: 10px;
     }
 
     fieldset {
-    border: 1px solid;
-    border-radius: 5px;
-    padding: 12px 12px 12px 12px;
-    margin-bottom: 15px;
-    margin-left: 0px;
-    margin-right: 0px;
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 12px 12px 12px 12px;
+        margin-bottom: 15px;
+        margin-left: 0px;
+        margin-right: 0px;
     }
 
     .col.field_type_checkbox {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-start;
-    align-items: flex-start;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+        align-items: flex-start;
     }
 
-    .col.field_type_checkbox .input_wrapper {
-    width: auto;
-    margin: 1px 7px 0 0;
-    }
+        .col.field_type_checkbox .input_wrapper {
+            width: auto;
+            margin: 1px 7px 0 0;
+        }
 
     .label_wrapper {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 6px;
-    max-width: none;
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 6px;
+        max-width: none;
     }
 </style>
 
@@ -120,8 +120,8 @@
                         </tbody>
                         <tfoot>
                             <tr class="total" style="border-top: 1px solid">
-                                <td colspan="3">Order total</td>
-                                <td id="table-order-total-amount" class="align_right" notranslate="">@Model.Ticket?.TotalAmount?.ToString("$0.00")</td>
+                                <td colspan="3" class="fw-bold">Order total</td>
+                                <td id="table-order-total-amount" class="align_right fw-bold" notranslate="">@Model.Ticket?.TotalAmount?.ToString("$0.00")</td>
                             </tr>
                         </tfoot>
                     </table>
@@ -136,91 +136,109 @@
                 <form action="/buyer" method="post">
                     <div class="row gx-5 gy-4 gy-lg-5">
                         <div class="col-lg-3">
-                            <label>
+                            <label class="required">
                                 First Name
                             </label>
                             <input type="text" class="form-control" name="FirstName">
                         </div>
 
                         <div class="col-lg-3">
-                            <label>
+                            <label class="required">
                                 Last Name
                             </label>
                             <input type="text" class="form-control" name="LastName">
                         </div>
 
                         <div class="col-lg-3">
-                            <label>
+                            <label class="required">
                                 Email
                             </label>
                             <input type="text" class="form-control" name="Email">
                         </div>
 
                         <div class="col-lg-3">
-                            <label>
+                            <label class="required">
                                 Repeat Email
                             </label>
                             <input type="text" class="form-control" name="RepeatEmail">
                         </div>
 
                         <div class="col-lg-3">
-                            <label>
+                            <label class="required">
                                 Mobile Phone Number
                             </label>
                             <input type="text" class="form-control" name="MobilePhone">
                         </div>
 
                         <div class="col-lg-3">
-                            <label>
+                            <label class="required">
                                 Zip Code
                             </label>
                             <input type="text" class="form-control" name="ZipCode">
                         </div>
 
                         <div class="col-lg-6">
-                            <label>
+                            <label class="required">
                                 Address Line
                             </label>
                             <input type="text" class="form-control" name="AddressLine">
                         </div>
 
                         <div class="col-lg-3">
-                            <label>
+                            <label class="required">
                                 City
                             </label>
                             <input type="text" class="form-control" name="AddressCity">
                         </div>
 
                         <div class="col-lg-3">
-                            <label>
+                            <label class="required">
                                 State
                             </label>
                             <input type="text" class="form-control" name="AddressState">
                         </div>
 
                         <div class="col-lg-12">
-                            <fieldset legend_notranslate="1">
-                                <legend notranslate="">
-                                    Tier II Tickets. On sale until March 8th or tickets sold out - Adult Ticket 1
-                                </legend>
-                                <div>
-                                    <label>
-                                        Attendee First and Last Name
-                                    </label>
-                                    <input type="text" class="form-control" id="lastName">
-                                </div>
-                                <div class="col field_type_checkbox">
-                                    <div class="label_wrapper" id="customFormElement_1056225_108472124_1-label">
-                                        <label for="customFormElement_1056225_108472124_1" class="required ">I agree to the terms and conditions.</label>
-                                        <a aria-label="Reveal terms and conditions" role="button" aria-expanded="false" aria-controls="customFormElement_1056225_108472124_1-terms" 
-                                        id="customFormElement_1056225_108472124_1-toggle" href="#customFormElement_1056225_108472124_1-terms" class="terms_document_button">
-                                        <span aria-hidden="true" class="fa fa-file-text-o"></span></a>
-                                    </div>
-                                    <div class="input_wrapper" id="customFormElement_1056225_108472124_1-element">
-                                        <input type="checkbox" />
-                                    </div>
-                                </div>
-                            </fieldset>
+                            @foreach (var category in Model.Categories)
+                            {
+                                var ticketCategory = Model.GetTicketCategory(category.RowId);
+                                var quantity = ticketCategory?.Quantity ?? 0;
+                                @foreach (var ordernum in Enumerable.Range(1, quantity))
+                                {
+                                    <fieldset legend_notranslate="1">
+                                        <legend notranslate="">
+                                            @category.CategoryName - @ordernum
+                                        </legend>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <label>
+                                                        First Name
+                                                    </label>
+                                                    <input type="text" class="form-control" name="attendee-FirstName-@ordernum-@category.RowId">
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label>
+                                                        Last Name
+                                                    </label>
+                                                    <input type="text" class="form-control" name="attendee-LastName-@ordernum-@category.RowId">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col field_type_checkbox">
+                                            <div class="label_wrapper">
+                                                <label class="required ">I agree to the terms and conditions.</label>
+                                                <a aria-label="Reveal terms and conditions" role="button" aria-expanded="false" class="terms_document_button">
+                                                    <span aria-hidden="true" class="fa fa-file-text-o" onclick="new bootstrap.Modal(document.getElementById('exampleModal')).show()"></span>
+                                                </a>
+                                            </div>
+                                            <div class="input_wrapper">
+                                                <input type="checkbox" name="attendee-IsAgree-@ordernum-@category.RowId" />
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                }
+                            }
                         </div>
 
                         <div class="col-12">
@@ -241,4 +259,37 @@
     </section>
     <!--Contact Section ======================-->
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:80%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Terms and Conditions</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="terms_document" notranslate="" style="display: block; overflow: auto;">
+                    <p dir="ltr">Please PRINT and bring this ticket to the event entrance. The name on the ticket must match the ticket holder’s government issued identification. </p>
+                    <p dir="ltr"><strong>DISCLAIMER</strong>: All sales are final. Rain or Shine. Ticket is for JetLAG Music Festival, not for particular artist performance. Artists and showtimes are subject to change. No refunds or exchanges other than for cancellation of JetLAG Festival. "Management" means JETLAG FESTIVAL, INC. and PEACEFUL VALLEY CAMPSITE. Management reserves the right without the refund of any portion of the ticket purchase price, to refuse admission or to eject any person who fails to comply with the rules of the event, venue, local, state or federal law or whose conduct is deemed illegal, disorderly, or offensive by Management. Ticket holder bears all risks of personal injury and/or property loss incidental to the event, whether occurring before, during or after the event. Ticket holder bears all risks of the inclement weather. This Ticket holder consents to Management's use of your image or likeness incidental to any video display, transmission, or recording of the event.</p>
+                    <p dir="ltr"><strong>COVID-19 RELEASE OF LIABILITY ADDENDUM</strong></p>
+                    <p dir="ltr">Due to the ongoing spread of COVID-19, individuals who fall within any of the categories below should not engage in JetLAG Festival Inc. events. By attending a JetLAG Festival Inc. event, you certify that you do not fall into any of the following categories:  </p>
+                    <ol><li dir="ltr"><p dir="ltr">Individuals who currently or within the past fourteen (14) days have experienced any symptoms associated with COVID-19, which include fever, cough, and shortness of breath among others;</p></li><li dir="ltr"><p dir="ltr">Individuals who have traveled at any point in the past fourteen (14) days either internationally or to a community in the U.S. that has experienced or is experiencing sustained community spread of COVID-19; or  </p></li><li dir="ltr"><p dir="ltr">Individuals who believe that they may have been exposed to a confirmed or suspected case of COVID-19 or have been diagnosed with COVID-19 and are not yet cleared as non-contagious by state or local public health authorities or the health care team responsible for their treatment. </p></li></ol><p dir="ltr">In addition, you agree that you will provide proof of completed COVID-19 vaccine, or a negative test result, from a test taken less than 3 days prior to the event, upon entry to the event.</p>
+                    <p dir="ltr">You agree to adhere to all JetLAG Festival Inc., New York State Department of Health, and Delaware County Department of Health guidelines released leading up to the event.</p>
+                    <p dir="ltr">You understand there is no guarantee of refunds, including if there is a cancelation due to a public health issue that poses any risk to Management or and/or the public, or cancellation due to force majeure or acts of God. If there is a cancellation, Management will seek  to refund attendees to the best of its ability.</p>
+                    <p dir="ltr"><strong>DUTY TO SELF-MONITOR:</strong></p>
+                    <p dir="ltr">Participants and volunteers agree to self-monitor for signs and symptoms of COVID-19 (symptoms typically include fever, cough, and shortness of breath) and, contact JetLAG Festival Inc. at <a href="mailto:info@jetlagfestival.com">info@jetlagfestival.com</a> if he/she experiences symptoms of COVID-19 within 14 days after participating or volunteering with JetLAG Festival Inc.</p>
+                    <p dir="ltr"><strong>RELEASE AND WAIVER. </strong></p>
+                    <p dir="ltr">I HEREBY RELEASE, WAIVE AND FOREVER DISCHARGE ANY AND ALL LIABILITY, CLAIMS, AND DEMANDS OF WHATEVER KIND OR NATURE AGAINST JETLAG FESTIVAL INC. AND ITS AFFILIATED PARTNERS AND SPONSORS, INCLUDING IN EACH CASE, WITHOUT LIMITATION, THEIR DIRECTORS, OFFICERS, EMPLOYEES, VOLUNTEERS, AND AGENTS (THE “RELEASED PARTIES”), EITHER IN LAW OR IN EQUITY, TO THE FULLEST EXTENT PERMISSIBLE BY LAW, INCLUDING BUT NOT LIMITED TO DAMAGES OR LOSSES CAUSED BY THE NEGLIGENCE, FAULT OR CONDUCT OF ANY KIND ON THE PART OF  THE RELEASED PARTIES, INCLUDING BUT NOT LIMITED TO DEATH, BODILY INJURY, ILLNESS, DISEASE, ECONOMIC LOSS OR OUT OF POCKET EXPENSES, OR LOSS OR DAMAGE TO PROPERTY, WHICH I, MY HEIRS, ASSIGNEES, NEXT OF KIN AND/OR LEGALLY APPOINTED OR DESIGNATED REPRESENTATIVES, MAY HAVE OR WHICH MAY HEREINAFTER ACCRUE ON MY BEHALF, WHICH ARISE OR MAY HEREAFTER ARISE FROM MY PARTICIPATION WITH THE ACTIVITY.</p>
+                    <p dir="ltr"><strong>ASSUMPTION OF RISK. </strong>I acknowledge and understand the following:</p>
+                    <ol><li dir="ltr"><p dir="ltr">Participation includes possible exposure to and illness from infectious diseases including but not limited to COVID-19. While particular rules and personal discipline may reduce this risk, the risk of serious illness does exist;</p></li><li dir="ltr"><p dir="ltr">I knowingly and freely assume all such risks related to illness and infectious diseases, such as COVID-19, even if arising from the negligence or fault of the Released Parties; and</p></li><li dir="ltr"><p dir="ltr">I hereby knowingly assume the risk of injury, harm and loss associated with the Activity, including any injury, harm and loss caused by the negligence, fault or conduct of any kind on the part of the Released Parties.</p></li></ol><div><span style="font-size:15px;">BY ATTENDING AND/OR PARTICIPATING IN THE ACTIVITY, YOU ARE DEEMED TO HAVE GIVEN A FULL RELEASE OF LIABILITY TO THE RELEASED PARTIES TO THE FULLEST EXTENT PERMITTED BY LAW.</span></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                @* <button type="button" class="btn btn-primary">Save changes</button> *@
+            </div>
+        </div>
+    </div>
 </div>
