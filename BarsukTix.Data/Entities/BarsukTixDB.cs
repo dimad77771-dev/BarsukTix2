@@ -181,7 +181,9 @@ public partial class BarsukTixDB : DbContext
         {
             entity.HasKey(e => e.RowId);
 
-            entity.Property(e => e.RowId).ValueGeneratedNever();
+			entity.HasIndex(e => new { e.TicketCategoryRowId, e.SequenceNumber }, "UK_TicketAttendees").IsUnique();
+
+			entity.Property(e => e.RowId).ValueGeneratedNever();
             entity.Property(e => e.FirstName).HasMaxLength(1000);
             entity.Property(e => e.LastName).HasMaxLength(1000);
 

@@ -5,15 +5,17 @@ namespace BarsukTix.Data.Entities;
 
 public partial class TicketAttendee
 {
-    public Guid RowId { get; set; }
+	public Guid RowId { get; set; }
 
-    public Guid TicketCategoryRowId { get; set; }
+	public Guid TicketCategoryRowId { get; set; }
 
-    public string? FirstName { get; set; }
+	public int SequenceNumber { get; set; }
 
-    public string? LastName { get; set; }
+	public string? FirstName { get; set; }
 
-    public bool IsAgree { get; set; }
+	public string? LastName { get; set; }
 
-    public virtual TicketCategory TicketCategoryRow { get; set; } = null!;
+	public bool IsAgree { get; set; }
+
+	public virtual TicketCategory TicketCategoryRow { get; set; } = null!;
 }
