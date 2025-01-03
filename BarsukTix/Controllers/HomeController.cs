@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Diagnostics;
+using BarsukTix.Data.Entities;
 using BarsukTix.Models;
 using BarsukTix.Services.DTO;
 using BarsukTix.Services.Implementations;
@@ -83,6 +84,17 @@ namespace BarsukTix.Controllers
             var viewmodel = _ticketService.GetTicketViewModel(userId);
             return View(viewmodel);
         }
+
+        [HttpPost]
+        [Route("buyer")]
+        public IActionResult PostBuyer(Ticket ticketdata)
+        {
+            var userId = this.GetUserId();
+            var formdata = Request.Form.ToDictionary(x => x.Key, x => x.Value.ToString());
+            var viewmodel = _ticketService.PostBuyer(ticketdata, formdata, userId);
+            return View(viewmodel);
+        }
+
 
 
         [Route("payment")]
