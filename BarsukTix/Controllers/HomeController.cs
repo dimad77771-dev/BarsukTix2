@@ -49,33 +49,25 @@ namespace BarsukTix.Controllers
             return View();
         }
 
-        [HttpGet]
-        [Route("buyer")]
-		public IActionResult Buyer()
-		{
-			return View();
-		}
-
         [HttpPost]
-        [Route("postTicket")]
+        [Route("ticket")]
         public IActionResult PostTicket()
         {
             var userId = this.GetUserId();
             var formdata = Request.Form.ToDictionary(x => x.Key, x => x.Value.ToString());
             var viewmodel = _ticketService.PostTicket(formdata, userId);
-            if (viewmodel is TicketViewModel)
+            if (viewmodel.HasError)
             {
                 return View("Ticket", viewmodel);
             }
-            else if (viewmodel is BuyerViewModel)
+            else
             {
-                return View("Buyer", viewmodel);
+                return Redirect("Buyer");
             }
-            else throw new Exception();
         }
 
-
-        [Route("ticket")]
+        [HttpGet]
+        [Route("Ticket")]
 		public IActionResult Ticket()
 		{
             var userId = this.GetUserId();
@@ -83,7 +75,17 @@ namespace BarsukTix.Controllers
             return View(viewmodel);
 		}
 
-		[Route("payment")]
+        [HttpGet]
+        [Route("Buyer")]
+        public IActionResult Buyer()
+        {
+            var userId = this.GetUserId();
+            var viewmodel = _ticketService.GetTicketViewModel(userId);
+            return View(viewmodel);
+        }
+
+
+        [Route("payment")]
 		public IActionResult Payment()
 		{
 			return View();

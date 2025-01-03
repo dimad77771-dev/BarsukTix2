@@ -1,5 +1,6 @@
 ﻿using BarsukTix.Data.Entities;
 using BarsukTix.Services.DTO;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,74 +12,80 @@ namespace BarsukTix.Services.Implementations
 {
 	public class TicketService
 	{
-        public object PostTicket(Dictionary<string,string> formdata, string userId)
+        public TicketViewModel PostTicket(Dictionary<string,string> formdata, string userId)
         {
             var data = formdata.Select(x => (Guid.Parse(x.Key), int.Parse(x.Value.ToString()))).ToDictionary();
 
             var db = GetDB();
-            var ticket = db.Tickets.SingleOrDefault(t => t.UserId == userId);
-            var categories = db.Categories.OrderBy(x => x.SequenceNumber).ToArray();
 
-            if (ticket == null)
+            using (var dbContextTransaction = db.Database.BeginTransaction())
             {
-                ticket = new Ticket
-                {
-                    RowId = Guid.NewGuid(),
-                    UserId = userId,
-                };
-                db.Tickets.Add(ticket);
-            }
+                var categories = GetAllCategories(db);
+                var ticket = db.Tickets.SingleOrDefault(t => t.UserId == userId);
 
-            var oldTicketCategories = db.TicketCategories.Where(x => x.TicketRowId == ticket.RowId).ToArray();
-            var newTicketCategories = data.Select(x => new TicketCategory{CategoryRowId = x.Key, Quantity = x.Value }).ToArray();
-            var totalQuantity = newTicketCategories.Sum(x => x.Quantity);
-            if (totalQuantity > 0) 
-            {
-                foreach (var newTicketCategory in newTicketCategories)
+                if (ticket == null)
                 {
-                    var oldTicketCategory = oldTicketCategories.SingleOrDefault(x => x.CategoryRowId == newTicketCategory.CategoryRowId);
-                    if (oldTicketCategory == null)
+                    ticket = new Ticket
                     {
-                        newTicketCategory.RowId = Guid.NewGuid();
-                        newTicketCategory.TicketRowId = ticket.RowId;
-                        db.TicketCategories.Add(newTicketCategory);
-                    }
-                    else
-                    {
-                        oldTicketCategory.Quantity = newTicketCategory.Quantity;
-                    }
+                        RowId = Guid.NewGuid(),
+                        UserId = userId,
+                    };
+                    db.Tickets.Add(ticket);
                 }
-                var delTicketCategories = oldTicketCategories.Where(x => !newTicketCategories.Any(z => z.CategoryRowId == x.CategoryRowId)).ToList();
-                delTicketCategories.ForEach(x => db.TicketCategories.Remove(x));
 
-                db.SaveChanges();
-
-                var result = new BuyerViewModel
+                var oldTicketCategories = db.TicketCategories.Where(x => x.TicketRowId == ticket.RowId).ToArray();
+                var newTicketCategories = data.Select(x => new TicketCategory{CategoryRowId = x.Key, Quantity = x.Value }).ToArray();
+                var totalQuantity = newTicketCategories.Sum(x => x.Quantity);
+                if (totalQuantity > 0) 
                 {
-                    Ticket = ticket,
-                    Categories = db.Categories.OrderBy(x => x.SequenceNumber).ToArray(),
-                };
-                return result;
-            }
-            else
-            {
-                var result = GetTicketViewModel(userId);
-                result.TicketCategories.ForEach(x => x.Quantity = newTicketCategories?.SingleOrDefault(z => z.CategoryRowId == x.CategoryRowId)?.Quantity ?? 0);
-                result.ErrorText = "The total must be greater than zero";
-                return result;
+                    foreach (var newTicketCategory in newTicketCategories)
+                    {
+                        var oldTicketCategory = oldTicketCategories.SingleOrDefault(x => x.CategoryRowId == newTicketCategory.CategoryRowId);
+                        if (oldTicketCategory == null)
+                        {
+                            newTicketCategory.RowId = Guid.NewGuid();
+                            newTicketCategory.TicketRowId = ticket.RowId;
+                            db.TicketCategories.Add(newTicketCategory);
+                        }
+                        else
+                        {
+                            oldTicketCategory.Quantity = newTicketCategory.Quantity;
+                        }
+                    }
+
+                    var delTicketCategories = oldTicketCategories.Where(x => !newTicketCategories.Any(z => z.CategoryRowId == x.CategoryRowId)).ToList();
+                    delTicketCategories.ForEach(x => db.TicketCategories.Remove(x));
+
+                    ticket.TotalAmount = newTicketCategories.Sum(x => x.Quantity * GetCategoryPrice(x.CategoryRowId, categories));
+
+                    db.SaveChanges();
+                    dbContextTransaction.Commit();
+
+                    var result = GetTicketViewModel(userId);
+                    return result;
+                }
+                else
+                {
+                    var result = GetTicketViewModel(userId);
+                    result.TicketCategories.ForEach(x => x.Quantity = newTicketCategories?.SingleOrDefault(z => z.CategoryRowId == x.CategoryRowId)?.Quantity ?? 0);
+                    result.ErrorText = "The total must be greater than zero";
+                    return result;
+                }
             }
         }
 
         public TicketViewModel GetTicketViewModel(string userId)
         {
             var db  = GetDB();
-            var row = db.Tickets.SingleOrDefault(t => t.UserId == userId);
+            var row = db.Tickets.Include(x => x.TicketCategories).ThenInclude(x => x.TicketAttendees).SingleOrDefault(t => t.UserId == userId);
 
             var result = new TicketViewModel
             {
                 Ticket = row,
                 TicketCategories = row?.TicketCategories?.ToList() ?? new List<TicketCategory>(),
-                Categories = db.Categories.OrderBy(x => x.SequenceNumber).ToArray(),
+                TicketAttendees = row?.TicketCategories?.SelectMany(x => x.TicketAttendees).ToList() ?? new List<TicketAttendee>(),
+                Categories = GetAllCategories(db),
+                Festival = GetFestival(db),
             };
 
             return result;
@@ -137,7 +144,24 @@ namespace BarsukTix.Services.Implementations
 			return true;
 		}
 
+        private Festival GetFestival(BarsukTixDB db)
+        {
+            var row = db.Festivals.FirstOrDefault();
+            return row ?? new Festival { FestivalFullName = "-", FestivalName = "-" };
+        }
 
+        private Category[] GetAllCategories(BarsukTixDB db)
+        {
+            return db.Categories.OrderBy(x => x.SequenceNumber).ToArray();
+        }
+
+        private decimal GetCategoryPrice(Guid categoryRowId, Category[] categories)
+        {
+            var price = categories.SingleOrDefault(x => x.RowId == categoryRowId)?.Price ?? 0M;
+            return price;
+        }
+
+ 
 
         BarsukTixDB GetDB()
         {

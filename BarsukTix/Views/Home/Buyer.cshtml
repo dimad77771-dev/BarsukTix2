@@ -1,45 +1,46 @@
-﻿@{
+﻿@model BarsukTix.Services.DTO.TicketViewModel
+@{
     ViewData["Title"] = "Buy Ticket";
 }
 
 <style>
     table.summary tr.ticket_row td {
-        padding: 10px 10px 0 10px;
-        vertical-align: top;
+    padding: 10px 10px 0 10px;
+    vertical-align: top;
     }
 
     table.summary tr td, table.summary tr th {
-        padding: 10px;
+    padding: 10px;
     }
 
     fieldset {
-        border: 1px solid;
-        border-radius: 5px;
-        padding: 12px 12px 12px 12px;
-        margin-bottom: 15px;
-        margin-left: 0px;
-        margin-right: 0px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 12px 12px 12px 12px;
+    margin-bottom: 15px;
+    margin-left: 0px;
+    margin-right: 0px;
     }
 
     .col.field_type_checkbox {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: flex-start;
-        align-items: flex-start;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: flex-start;
     }
 
     .col.field_type_checkbox .input_wrapper {
-        width: auto;
-        margin: 1px 7px 0 0;
+    width: auto;
+    margin: 1px 7px 0 0;
     }
 
     .label_wrapper {
-        width: 100%;
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 6px;
-        max-width: none;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 6px;
+    max-width: none;
     }
 </style>
 
@@ -75,8 +76,8 @@
                         <thead>
                             <tr class="event_name">
                                 <th colspan="4" style="border-bottom: 1px solid">
-                                    <span class="name" notranslate="">JetLAG Festival 2025: Euphonia2</span>
-                                    <span class="date"><span isolate="">Fri</span> <span isolate="">Jun</span> <var>20</var>, <var>2025</var> <var>1:00 PM</var> - <span isolate="">Sun</span> <span isolate="">Jun</span> <var>22</var>, <var>2025</var> EDT</span>
+                                    <span class="name" notranslate="">@Model.Festival.FestivalFullName</span>
+                                    @* <span class="date"><span isolate="">Fri</span> <span isolate="">Jun</span> <var>20</var>, <var>2025</var> <var>1:00 PM</var> - <span isolate="">Sun</span> <span isolate="">Jun</span> <var>22</var>, <var>2025</var> EDT</span> *@
                                 </th>
                             </tr>
                             <tr class="only_visible_to_screen_readers" style="display:none">
@@ -93,66 +94,34 @@
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <tr class="ticket_row" data-related-item="quantity_4558522" data-item-type="TICKET">
-                                <td class="ticket_row-name" notranslate="">
-                                    Tier II Tickets. On sale until March 8th or tickets sold out - Adult Ticket
-                                </td>
 
-                                <td class="align_right ticket_row-price">
-                                    <span notranslate="">$180.00</span>
-                                    <small>+&nbsp;$5.95</small>
-                                </td>
-                                <td class="ticket_row-quantity" style="padding-left: 0;" notranslate="">
-                                    ×&nbsp;1
-                                </td>
-                                <td class="align_right ticket_row-subtotal" notranslate="">$185.95</td>
-                            </tr>
-                            <tr class="ticket_row" data-related-item="quantity_4558523" data-item-type="TICKET">
-                                <td class="ticket_row-name" notranslate="">
-                                    Tier II Tickets. On sale until March 8th or tickets sold out - Student Ticket (Age 15-21)
-                                </td>
+                            @foreach (var category in Model.Categories)
+                            {
+                                var ticketCategory = Model.GetTicketCategory(category.RowId);
+                                if (ticketCategory?.Quantity > 0)
+                                {
+                                    var amount = ticketCategory.Quantity * category.Price;
 
-                                <td class="align_right ticket_row-price">
-                                    <span notranslate="">$125.00</span>
-                                    <small>+&nbsp;$4.25</small>
-                                </td>
-                                <td class="ticket_row-quantity" style="padding-left: 0;" notranslate="">
-                                    ×&nbsp;2
-                                </td>
-                                <td class="align_right ticket_row-subtotal" notranslate="">$258.50</td>
-                            </tr>
-                            <tr class="ticket_row" data-related-item="quantity_4558546" data-item-type="TICKET">
-                                <td class="ticket_row-name" notranslate="">
-                                    Child Ticket - Child Ticket (Age 5- 14)
-                                </td>
-
-                                <td class="align_right ticket_row-price">
-                                    <span notranslate="">$25.00</span>
-                                    <small>+&nbsp;$1.75</small>
-                                </td>
-                                <td class="ticket_row-quantity" style="padding-left: 0;" notranslate="">
-                                    ×&nbsp;1
-                                </td>
-                                <td class="align_right ticket_row-subtotal" notranslate="">$26.75</td>
-                            </tr>
-                            <tr class="ticket_row" data-related-item="donationAmount" data-item-type="DONATION">
-                                <td class="ticket_row-name" notranslate="">
-                                    Good Music for Good Causes (OPTIONAL)
-                                </td>
-
-                                <td class="align_right ticket_row-price">
-                                    <span notranslate="">$25.00</span>
-                                </td>
-                                <td class="ticket_row-quantity" style="padding-left: 0;" notranslate="">
-                                    ×&nbsp;1
-                                </td>
-                                <td class="align_right ticket_row-subtotal" notranslate="">$25.00</td>
-                            </tr>
+                                    <tr class="ticket_row">
+                                        <td class="ticket_row-name" notranslate="">
+                                            @category.CategoryName
+                                        </td>
+                                        <td class="align_right ticket_row-price">
+                                            <span notranslate="">@category.Price.ToString("$0.00")</span>
+                                            @* <small>+&nbsp;$5.95</small> *@
+                                        </td>
+                                        <td class="ticket_row-quantity" style="padding-left: 0;" notranslate="">
+                                            ×&nbsp;@ticketCategory.Quantity
+                                        </td>
+                                        <td class="align_right ticket_row-subtotal" notranslate="">@amount.ToString("$0.00")</td>
+                                    </tr>
+                                }
+                            }
                         </tbody>
                         <tfoot>
                             <tr class="total" style="border-top: 1px solid">
                                 <td colspan="3">Order total</td>
-                                <td id="table-order-total-amount" class="align_right" notranslate="">$496.20</td>
+                                <td id="table-order-total-amount" class="align_right" notranslate="">@Model.Ticket?.TotalAmount?.ToString("$0.00")</td>
                             </tr>
                         </tfoot>
                     </table>
@@ -164,69 +133,69 @@
                         Please complete the form below
                     </h2>
                 </div>
-                <form action="/buy">
+                <form action="/buyer">
                     <div class="row gx-5 gy-4 gy-lg-5">
                         <div class="col-lg-3">
                             <label>
                                 First Name
                             </label>
-                            <input type="text" class="form-control" id="lastName">
+                            <input type="text" class="form-control" id="FirstName">
                         </div>
 
                         <div class="col-lg-3">
                             <label>
                                 Last Name
                             </label>
-                            <input type="text" class="form-control" id="lastName">
+                            <input type="text" class="form-control" id="LastName">
                         </div>
 
                         <div class="col-lg-3">
                             <label>
                                 Email
                             </label>
-                            <input type="text" class="form-control" id="lastName">
+                            <input type="text" class="form-control" id="Email">
                         </div>
 
                         <div class="col-lg-3">
                             <label>
                                 Repeat Email
                             </label>
-                            <input type="text" class="form-control" id="lastName">
+                            <input type="text" class="form-control" id="RepeatEmail">
                         </div>
 
                         <div class="col-lg-3">
                             <label>
                                 Mobile Phone Number
                             </label>
-                            <input type="text" class="form-control" id="lastName">
+                            <input type="text" class="form-control" id="MobilePhone">
                         </div>
 
                         <div class="col-lg-3">
                             <label>
                                 Zip Code
                             </label>
-                            <input type="text" class="form-control" id="lastName">
+                            <input type="text" class="form-control" id="ZipCode">
                         </div>
 
                         <div class="col-lg-6">
                             <label>
                                 Address Line
                             </label>
-                            <input type="text" class="form-control" id="lastName">
+                            <input type="text" class="form-control" id="AddressLine">
                         </div>
 
                         <div class="col-lg-3">
                             <label>
                                 City
                             </label>
-                            <input type="text" class="form-control" id="lastName">
+                            <input type="text" class="form-control" id="AddressCity">
                         </div>
 
                         <div class="col-lg-3">
                             <label>
                                 State
                             </label>
-                            <input type="text" class="form-control" id="lastName">
+                            <input type="text" class="form-control" id="AddressState">
                         </div>
 
                         <div class="col-lg-12">
@@ -253,6 +222,16 @@
                                 </div>
                             </fieldset>
                         </div>
+
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-gradient d-inline-flex" aria-label="buttons">Next</button>
+                        </div>
+                        <div class="col-12">
+                            <p class="text-danger">
+                                @Model.ErrorText
+                            </p>
+                        </div>
+
                     </div>
                 </form>
             </div>

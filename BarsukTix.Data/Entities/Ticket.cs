@@ -27,7 +27,7 @@ public partial class Ticket
 
     public string? AddressState { get; set; }
 
-    public decimal TotalAmount { get; set; }
+    public decimal? TotalAmount { get; set; }
 
     public bool IsReadyPayment { get; set; }
 

@@ -27,11 +27,18 @@
             </div>
 
             <div class="contact-us-form">
-                <form action="/postTicket" method="post">
+                <form action="/ticket" method="post">
                     <div class="row gx-5 gy-4 gy-lg-5 col-lg-6">
 
                         @foreach (var category in Model.Categories)
                         {
+                            var ticketCategory = Model.GetTicketCategory(category.RowId);
+                            var items = Enumerable.Range(0, 10).Select(x => new SelectListItem
+                            {
+                                Text = x.ToString(),
+                                Value = x.ToString(),
+                                Selected = ticketCategory?.Quantity == x,
+                            });
                             <div class="col-lg-8">
                                 <span>
                                     @category.CategoryName
@@ -40,18 +47,8 @@
                                 </span>
                             </div>
                             <div class="col-lg-4">
-                                <select class="form-control" name="@category.RowId" id="@category.RowId">
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
+                                <select class="form-control" name="@category.RowId" id="@category.RowId" asp-items="@items" >
+
                                 </select>
                             </div>
                         }
