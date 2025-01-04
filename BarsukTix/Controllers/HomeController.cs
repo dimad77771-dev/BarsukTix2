@@ -92,15 +92,22 @@ namespace BarsukTix.Controllers
             var userId = this.GetUserId();
             var formdata = Request.Form.ToDictionary(x => x.Key, x => x.Value.ToString());
             var viewmodel = _ticketService.PostBuyer(ticketdata, formdata, userId);
-            return View(viewmodel);
-        }
-
-
+            if (viewmodel.Ticket.IsReadyPayment && !viewmodel.Ticket.IsPaid)
+            {
+                return Redirect("payment");
+            }
+            else
+            {
+                return View("buyer", viewmodel);
+            }
+		}
 
         [Route("payment")]
 		public IActionResult Payment()
 		{
-			return View();
+			var userId = this.GetUserId();
+			var viewmodel = _ticketService.GetTicketViewModel(userId);
+			return View("payment", viewmodel);
 		}
 
         //[Authorize]
@@ -109,8 +116,15 @@ namespace BarsukTix.Controllers
 		public IActionResult PaymentProcessing(PaymentProcessingData data)
 		{
             var userId = this.GetUserId();
-            _ticketService.PaymentProcessing(data, userId);
-			return View("Index");
+			var viewmodel = _ticketService.PaymentProcessing(data, userId);
+            if (viewmodel.HasError)
+            {
+				return View("payment", viewmodel);
+			}
+            else
+            {
+			    return View("Index");
+            }
 		}
 
 

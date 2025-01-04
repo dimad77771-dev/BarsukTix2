@@ -1,20 +1,27 @@
-﻿@{
-    ViewData["Title"] = "Buy Ticket";
+﻿@using System.Globalization
+@* 
+5413330089099130
+01
+28
+100
+Jane Smith
+123 Street South
+90210
+*@
+
+@model BarsukTix.Services.DTO.TicketViewModel
+@{
+    ViewData["Title"] = "Payment";
 }
 
-<html>
-
-<!--SCRIPT-->
-// Included in the head element of your website
 <script type="text/javascript" src="https://secure.myhelcim.com/js/version2.js"></script>
-
 
 <div class="main" data-bs-spy="scroll" data-bs-target="#navContentmenu" data-bs-root-margin="0px 0px -50%" data-bs-smooth-scroll="true">
 
     <script type="text/javascript" src="https://secure.myhelcim.com/js/version2.js"></script>
 
     <!--Contact Section ======================-->
-    <section class="contact-section contact-page pt-70 pt-lg-120 pt-xxl-150">
+    <section class="contact-section contact-page pt-70 pt-lg-120 pt-xxl-30">
         <div class="container">
             <div class="row gy-20 gy-lg-0 align-items-lg-end justify-content-lg-between mb-30 mb-lg-70">
                 <div class="col-lg-5">
@@ -25,7 +32,7 @@
                     </div>
                     <!-- section-title -->
                 </div>
-                <div class="col-lg-5">
+                <div class="col-lg-5 d-none">
                     <div class="highlights-text">
                         <p class="custom-roboto text-lg-end">
                             Immerse in mesmerizing performances,vibrant soundscapes,and interactive art at our music extravaganza. Experience a festival atmosphere like no other, where unforgettable moments.
@@ -38,69 +45,76 @@
                 <form name="helcimForm" id="helcimForm" action="PaymentProcessing" method="POST">
                     <div class="row gx-5 gy-4 gy-lg-5">
                         <div id="helcimResults"></div>
-                        <input type="hidden" id="token" value="f5bad81720838e432e0e8b">
-                        <input type="hidden" id="amountHash" value="dffbd50b8c28ed455525f619fad22dba80bf3ec544e0e220dab788a8d0762a69">
+                        <input type="hidden" id="token" value="@Model.HelcimToken">
+                        <input type="hidden" id="amountHash" value="@Model.GetAmountHash()">
 
                         <div class="col-lg-3">
                             <label>
                                 Сard Number
                             </label>
-                            <input type="text" class="form-control" id="cardNumber" value="5413330089099130">
+                            <input type="text" class="form-control" id="cardNumber" value="">   
                         </div>
 
                         <div class="col-lg-3">
                             <label>
                                 Expiry Month
                             </label>
-                            <input type="text" class="form-control" id="cardExpiryMonth" value="01">
+                            <input type="text" class="form-control" id="cardExpiryMonth" value="">
                         </div>
 
                         <div class="col-lg-3">
                             <label>
                                 Expiry Year
                             </label>
-                            <input type="text" class="form-control" id="cardExpiryYear" value="28">
+                            <input type="text" class="form-control" id="cardExpiryYear" value="">
                         </div>
 
                         <div class="col-lg-3">
                             <label>
                                 CVV
                             </label>
-                            <input type="text" class="form-control" id="cardCVV" value="100">
+                            <input type="text" class="form-control" id="cardCVV" value="">
                         </div>
 
                         <div class="col-lg-3">
                             <label>
                                 Card Holder Name
                             </label>
-                            <input type="text" class="form-control" id="cardHolderName" value="Jane Smith">
+                            <input type="text" class="form-control" id="cardHolderName" value="">
                         </div>
 
                         <div class="col-lg-3">
                             <label>
                                 Address
                             </label>
-                            <input type="text" class="form-control" id="cardHolderAddress" value="123 Street South">
+                            <input type="text" class="form-control" id="cardHolderAddress" value="">
                         </div>
 
                         <div class="col-lg-3">
                             <label>
                                 Postal Code
                             </label>
-                            <input type="text" class="form-control" id="cardHolderPostalCode" value="90210">
+                            <input type="text" class="form-control" id="cardHolderPostalCode" value="">
                         </div>
 
                         <div class="col-lg-3">
                             <label>
                                 Amount
                             </label>
-                            <input type="text" class="form-control" id="amount" value="2500.00" readonly>
+                            <input type="text" class="form-control" id="amount" value="@Model.GetTotalAmount().ToString("0.00", CultureInfo.InvariantCulture)" readonly>
                         </div>
 
 
                         <div class="col-12">
                             <button type="button" class="btn btn-gradient d-inline-flex" aria-label="buttons" onclick="javascript:helcimProcess();">Process</button>
                         </div>
+                        <div class="col-12" id="errortext-div">
+                            <p class="text-danger">
+                                @Model.ErrorText
+                            </p>
+                        </div>
+
+
                     </div>
                     
                 </form>
@@ -113,4 +127,3 @@
 
 </div>
 
-</html>

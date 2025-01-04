@@ -17,6 +17,7 @@ namespace BarsukTix.Services.Implementations
 
         public TicketViewModel PostBuyer(Ticket ticketdata, Dictionary<string, string> formdata, string userId)
         {
+            var errors = new List<string>();
             var items = formdata
                 .Where(x => x.Key.StartsWith(ATTENDEE))
                 .Select(x => 
@@ -28,7 +29,7 @@ namespace BarsukTix.Services.Implementations
                     return new 
                     { 
                         Column = match.Groups["column"].Value,
-						SequenceNumber = match.Groups["sequenceNumber"].Value,
+						SequenceNumber = int.Parse(match.Groups["sequenceNumber"].Value),
 						CategoryRowId = Guid.Parse(match.Groups["category"].Value),
                         Value = x.Value ?? "",
 					};
@@ -41,6 +42,8 @@ namespace BarsukTix.Services.Implementations
             {
                 var categories = GetAllCategories(db);
                 var ticket = db.Tickets.Include(x => x.TicketCategories).ThenInclude(x => x.TicketAttendees).Single(t => t.UserId == userId);
+
+				TicketErrors(ticket, errors);
 
 				ticket.FirstName = ticketdata.FirstName;
 				ticket.LastName = ticketdata.LastName;
@@ -61,14 +64,14 @@ namespace BarsukTix.Services.Implementations
 				foreach (var item in items)
                 {
 					var ticketCategoryRowId = ticket.TicketCategories.Single(x => x.CategoryRowId == item.CategoryRowId).RowId;
-					var ticketAttendee = ticketAttendees.SingleOrDefault(x => x.TicketCategoryRowId == ticketCategoryRowId);
+					var ticketAttendee = ticketAttendees.SingleOrDefault(x => x.TicketCategoryRowId == ticketCategoryRowId && x.SequenceNumber == item.SequenceNumber);
                     if (ticketAttendee == null)
                     {
 						ticketAttendee = new TicketAttendee
 						{
 							RowId = Guid.NewGuid(),
 							TicketCategoryRowId = ticketCategoryRowId,
-                            SequenceNumber = int.Parse(item.SequenceNumber),
+                            SequenceNumber = item.SequenceNumber,
 						};
 						ticketAttendees.Add(ticketAttendee);
 					}
@@ -81,7 +84,7 @@ namespace BarsukTix.Services.Implementations
 							ticketAttendee.LastName = item.Value;
 							break;
 						case "IsAgree":
-							ticketAttendee.IsAgree = (item.Value == "1");
+							ticketAttendee.IsAgree = (item.Value.Contains("true"));
 							break;
 						default:
                             throw new Exception();
@@ -90,11 +93,35 @@ namespace BarsukTix.Services.Implementations
 				db.TicketAttendees.AddRange(ticketAttendees);
 				db.SaveChanges();
 
-                dbContextTransaction.Commit();
+                var error = GetTicketError(ticket);
+				ticket.IsReadyPayment = string.IsNullOrEmpty(error);
+				db.SaveChanges();
 
-                var result = GetTicketViewModel(userId);
-                return result;
+				dbContextTransaction.Commit();
+
+				var result = GetTicketViewModel(userId, db);
+                result.ErrorText = error;
+
+				return result;
             }
+        }
+
+		private string GetTicketError(Ticket ticket)
+		{
+            var errors = new List<string>();
+
+            if (string.Compare(ticket?.Email, ticket?.RepeatEmail, StringComparison.OrdinalIgnoreCase) != 0)
+            {
+                errors.Add("The 'Email' and 'Repeat Email' do not match");
+            }
+
+            var error = string.Join("\n", errors);
+            return error;
+		}
+
+		private void TicketErrors(Ticket ticket, List<string> errors)
+        {
+            //if (ticket.FirstName)
         }
 
         public TicketViewModel PostTicket(Dictionary<string,string> formdata, string userId)
@@ -146,12 +173,12 @@ namespace BarsukTix.Services.Implementations
                     db.SaveChanges();
                     dbContextTransaction.Commit();
 
-                    var result = GetTicketViewModel(userId);
+                    var result = GetTicketViewModel(userId, db);
                     return result;
                 }
                 else
                 {
-                    var result = GetTicketViewModel(userId);
+                    var result = GetTicketViewModel(userId, db);
                     result.TicketCategories.ForEach(x => x.Quantity = newTicketCategories?.SingleOrDefault(z => z.CategoryRowId == x.CategoryRowId)?.Quantity ?? 0);
                     result.ErrorText = "The total must be greater than zero";
                     return result;
@@ -159,9 +186,13 @@ namespace BarsukTix.Services.Implementations
             }
         }
 
-        public TicketViewModel GetTicketViewModel(string userId)
+        public TicketViewModel GetTicketViewModel(string userId, BarsukTixDB? db = null)
         {
-            var db  = GetDB();
+            if (db == null)
+            {
+                db  = GetDB();
+            }
+
             var row = db.Tickets.Include(x => x.TicketCategories).ThenInclude(x => x.TicketAttendees).SingleOrDefault(t => t.UserId == userId);
 
             var result = new TicketViewModel
@@ -176,57 +207,79 @@ namespace BarsukTix.Services.Implementations
             return result;
         }
 
-        public bool PaymentProcessing(PaymentProcessingData data, string userId)
+        public TicketViewModel PaymentProcessing(PaymentProcessingData data, string userId)
 		{
             var db = GetDB();
 
-            var amount = (decimal?)null;
-            if (!string.IsNullOrEmpty(data.amount))
+			using (var dbContextTransaction = db.Database.BeginTransaction())
             {
-                if (decimal.TryParse(data.amount.Replace(",","."), NumberStyles.Number, CultureInfo.InvariantCulture, out var amount2))
+				var ticket = db.Tickets.SingleOrDefault(t => t.UserId == userId);
+
+				var amount = (decimal?)null;
+                if (!string.IsNullOrEmpty(data.amount))
                 {
-                    amount = amount2;
+                    if (decimal.TryParse(data.amount.Replace(",","."), NumberStyles.Number, CultureInfo.InvariantCulture, out var amount2))
+                    {
+                        amount = amount2;
+                    }
                 }
+
+                var responseDateTime = (DateTime?)null;
+                var result1 = DateTime.TryParseExact(data.time ?? "", new[] { "HH:mm:ss" }, CultureInfo.InvariantCulture, DateTimeStyles.None, out var responseTime);
+                var result2 = DateTime.TryParseExact(data.date ?? "", new[] { "yyyy-MM-dd" }, CultureInfo.InvariantCulture, DateTimeStyles.None, out var responseDate);
+                if (result1 && result2)
+                {
+                    responseDateTime = responseDate.Date.Add(responseTime.TimeOfDay);
+                }
+
+                var paymentProcessing = new PaymentProcessing
+                {
+                    RowId = Guid.NewGuid(),
+                    UserId = userId,
+                    ProcessingDateTime = DateTime.Now,
+                    Response = data.response,
+                    ResponseMessage = data.responseMessage,
+                    NoticeMessage = data.noticeMessage,
+                    ResponseDateTime = responseDateTime,
+                    ResponseType = data.type,
+                    Amount = amount,
+                    CardHolderName = data.cardHolderName,
+                    CardNumber = data.cardNumber,
+                    CardExpiry = data.cardExpiry,
+                    CardToken = data.cardToken,
+                    CardType = data.cardType,
+                    TransactionId = data.transactionId,
+                    AvsResponse = data.avsResponse,
+                    CvvResponse = data.cvvResponse,
+                    ApprovalCode = data.approvalCode,
+                    OrderNumber = data.orderNumber,
+                    CustomerCode = data.customerCode,
+                    Currency = data.currency,
+                    XmlHash = data.xmlHash,
+                };
+
+                db.PaymentProcessings.Add(paymentProcessing);
+                db.SaveChanges();
+
+                ticket.IsPaid = (paymentProcessing.Response == "1");
+				db.SaveChanges();
+
+				dbContextTransaction.Commit();
+
+				var result = GetTicketViewModel(userId, db);
+
+				if (!ticket.IsPaid)
+                {
+					var error = data.responseMessage;
+                    if (string.IsNullOrEmpty(error)) 
+                    {
+						error = "Payment error";
+					}
+					result.ErrorText = error;
+				}
+
+				return result;
             }
-
-            var responseDateTime = (DateTime?)null;
-            var result1 = DateTime.TryParseExact(data.time ?? "", new[] { "HH:mm:ss" }, CultureInfo.InvariantCulture, DateTimeStyles.None, out var responseTime);
-            var result2 = DateTime.TryParseExact(data.date ?? "", new[] { "yyyy-MM-dd" }, CultureInfo.InvariantCulture, DateTimeStyles.None, out var responseDate);
-            if (result1 && result2)
-            {
-                responseDateTime = responseDate.Date.Add(responseTime.TimeOfDay);
-            }
-
-            var paymentProcessing = new PaymentProcessing
-            {
-                RowId = Guid.NewGuid(),
-                UserId = userId,
-                ProcessingDateTime = DateTime.Now,
-                Response = data.response,
-                ResponseMessage = data.responseMessage,
-                NoticeMessage = data.noticeMessage,
-                ResponseDateTime = responseDateTime,
-                ResponseType = data.type,
-                Amount = amount,
-                CardHolderName = data.cardHolderName,
-                CardNumber = data.cardNumber,
-                CardExpiry = data.cardExpiry,
-                CardToken = data.cardToken,
-                CardType = data.cardType,
-                TransactionId = data.transactionId,
-                AvsResponse = data.avsResponse,
-                CvvResponse = data.cvvResponse,
-                ApprovalCode = data.approvalCode,
-                OrderNumber = data.orderNumber,
-                CustomerCode = data.customerCode,
-                Currency = data.currency,
-                XmlHash = data.xmlHash,
-            };
-
-            db.PaymentProcessings.Add(paymentProcessing);
-            db.SaveChanges();
-
-			return true;
 		}
 
         private Festival GetFestival(BarsukTixDB db)

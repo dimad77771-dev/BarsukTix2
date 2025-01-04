@@ -35,9 +35,10 @@ namespace BarsukTix
 			builder.Services.AddTransient<TicketService, TicketService>();
 
             BarsukTixSettings.ConnectionString = configuration.GetConnectionString("DefaultConnection");
+			BarsukTixSettings.HelcimToken = configuration.GetSection("Helcim")?["Token"];
+			BarsukTixSettings.HelcimSecretKey = configuration.GetSection("Helcim")?["SecretKey"];
 
-
-            var app = builder.Build();
+			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

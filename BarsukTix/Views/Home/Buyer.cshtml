@@ -5,49 +5,49 @@
 
 <style>
     table.summary tr.ticket_row td {
-        padding: 10px 10px 0 10px;
-        vertical-align: top;
+    padding: 10px 10px 0 10px;
+    vertical-align: top;
     }
 
     table.summary tr td, table.summary tr th {
-        padding: 10px;
+    padding: 10px;
     }
 
     fieldset {
-        border: 1px solid;
-        border-radius: 5px;
-        padding: 12px 12px 12px 12px;
-        margin-bottom: 15px;
-        margin-left: 0px;
-        margin-right: 0px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 12px 12px 12px 12px;
+    margin-bottom: 15px;
+    margin-left: 0px;
+    margin-right: 0px;
     }
 
     .col.field_type_checkbox {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: flex-start;
-        align-items: flex-start;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: flex-start;
     }
 
-        .col.field_type_checkbox .input_wrapper {
-            width: auto;
-            margin: 1px 7px 0 0;
-        }
+    .col.field_type_checkbox .input_wrapper {
+    width: auto;
+    margin: 1px 7px 0 0;
+    }
 
     .label_wrapper {
-        width: 100%;
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 6px;
-        max-width: none;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 6px;
+    max-width: none;
     }
 </style>
 
 <div class="main" data-bs-spy="scroll" data-bs-target="#navContentmenu" data-bs-root-margin="0px 0px -50%" data-bs-smooth-scroll="true">
 
     <!--Contact Section ======================-->
-    <section class="contact-section contact-page pt-70 pt-lg-120 pt-xxl-150">
+    <section class="contact-section contact-page pt-70 pt-lg-120 pt-xxl-30">
         <div class="container">
             <div class="row gy-20 gy-lg-0 align-items-lg-end justify-content-lg-between mb-3 mb-lg-5">
                 <div class="col-lg-5">
@@ -133,69 +133,70 @@
                         Please complete the form below
                     </h2>
                 </div>
+
                 <form action="/buyer" method="post">
                     <div class="row gx-5 gy-4 gy-lg-5">
                         <div class="col-lg-3">
                             <label class="required">
                                 First Name
                             </label>
-                            <input type="text" class="form-control" name="FirstName">
+                            <input type="text" class="form-control" name="FirstName" value="@Model?.Ticket?.FirstName" required>
                         </div>
 
                         <div class="col-lg-3">
                             <label class="required">
                                 Last Name
                             </label>
-                            <input type="text" class="form-control" name="LastName">
+                            <input type="text" class="form-control" name="LastName" value="@Model?.Ticket?.LastName" required>
                         </div>
 
                         <div class="col-lg-3">
                             <label class="required">
                                 Email
                             </label>
-                            <input type="text" class="form-control" name="Email">
+                            <input type="text" class="form-control" name="Email" value="@Model?.Ticket?.Email" required>
                         </div>
 
                         <div class="col-lg-3">
                             <label class="required">
                                 Repeat Email
                             </label>
-                            <input type="text" class="form-control" name="RepeatEmail">
+                            <input type="text" class="form-control" name="RepeatEmail" value="@Model?.Ticket?.RepeatEmail" required>
                         </div>
 
                         <div class="col-lg-3">
                             <label class="required">
                                 Mobile Phone Number
                             </label>
-                            <input type="text" class="form-control" name="MobilePhone">
+                            <input type="text" class="form-control" name="MobilePhone" value="@Model?.Ticket?.MobilePhone" required>
                         </div>
 
                         <div class="col-lg-3">
                             <label class="required">
                                 Zip Code
                             </label>
-                            <input type="text" class="form-control" name="ZipCode">
+                            <input type="text" class="form-control" name="ZipCode" value="@Model?.Ticket?.ZipCode" required>
                         </div>
 
                         <div class="col-lg-6">
                             <label class="required">
                                 Address Line
                             </label>
-                            <input type="text" class="form-control" name="AddressLine">
+                            <input type="text" class="form-control" name="AddressLine" value="@Model?.Ticket?.AddressLine" required>
                         </div>
 
                         <div class="col-lg-3">
                             <label class="required">
                                 City
                             </label>
-                            <input type="text" class="form-control" name="AddressCity">
+                            <input type="text" class="form-control" name="AddressCity" value="@Model?.Ticket?.AddressCity" required>
                         </div>
 
                         <div class="col-lg-3">
                             <label class="required">
                                 State
                             </label>
-                            <input type="text" class="form-control" name="AddressState">
+                            <input type="text" class="form-control" name="AddressState" value="@Model?.Ticket?.AddressState" required>
                         </div>
 
                         <div class="col-lg-12">
@@ -205,6 +206,8 @@
                                 var quantity = ticketCategory?.Quantity ?? 0;
                                 @foreach (var ordernum in Enumerable.Range(1, quantity))
                                 {
+                                    var ticketAttendee = Model.TicketAttendees.SingleOrDefault(x => x.TicketCategoryRowId == ticketCategory?.RowId && x.SequenceNumber == ordernum);
+
                                     <fieldset legend_notranslate="1">
                                         <legend notranslate="">
                                             @category.CategoryName - @ordernum
@@ -215,13 +218,13 @@
                                                     <label>
                                                         First Name
                                                     </label>
-                                                    <input type="text" class="form-control" name="attendee-FirstName-@ordernum-@category.RowId">
+                                                    <input type="text" class="form-control" name="attendee-FirstName-@ordernum-@category.RowId" value="@ticketAttendee?.FirstName" />
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <label>
                                                         Last Name
                                                     </label>
-                                                    <input type="text" class="form-control" name="attendee-LastName-@ordernum-@category.RowId">
+                                                    <input type="text" class="form-control" name="attendee-LastName-@ordernum-@category.RowId" value="@ticketAttendee?.LastName">
                                                 </div>
                                             </div>
                                         </div>
@@ -233,7 +236,7 @@
                                                 </a>
                                             </div>
                                             <div class="input_wrapper">
-                                                <input type="checkbox" name="attendee-IsAgree-@ordernum-@category.RowId" />
+                                                @Html.CheckBox("attendee-IsAgree-" + ordernum + "-" + category.RowId, ticketAttendee?.IsAgree ?? false, new { required = "" })
                                             </div>
                                         </div>
                                     </fieldset>
@@ -244,7 +247,7 @@
                         <div class="col-12">
                             <button type="submit" class="btn btn-gradient d-inline-flex" aria-label="buttons">Next</button>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12" id="errortext-div">
                             <p class="text-danger">
                                 @Model.ErrorText
                             </p>
@@ -293,3 +296,16 @@
         </div>
     </div>
 </div>
+
+@section scripts
+{
+    @if (Model.HasError)
+    {
+        <script>
+            $(document).ready(function() {
+                $("#errortext-div").get(0).scrollIntoView();
+                //console.log( "ready!" );
+            });
+        </script>
+    }
+}
