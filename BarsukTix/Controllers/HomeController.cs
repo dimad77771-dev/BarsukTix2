@@ -67,6 +67,7 @@ namespace BarsukTix.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet]
         [Route("Ticket")]
 		public IActionResult Ticket()
@@ -76,6 +77,7 @@ namespace BarsukTix.Controllers
             return View(viewmodel);
 		}
 
+        [Authorize]
         [HttpGet]
         [Route("Buyer")]
         public IActionResult Buyer()
@@ -85,6 +87,7 @@ namespace BarsukTix.Controllers
             return View(viewmodel);
         }
 
+        [Authorize]
         [HttpPost]
         [Route("buyer")]
         public IActionResult PostBuyer(Ticket ticketdata)
@@ -102,6 +105,7 @@ namespace BarsukTix.Controllers
             }
 		}
 
+        [Authorize]
         [Route("payment")]
 		public IActionResult Payment()
 		{
@@ -110,7 +114,7 @@ namespace BarsukTix.Controllers
 			return View("payment", viewmodel);
 		}
 
-        //[Authorize]
+        [Authorize]
         [HttpPost]
 		[Route("PaymentProcessing")]
 		public IActionResult PaymentProcessing(PaymentProcessingData data)
@@ -128,7 +132,8 @@ namespace BarsukTix.Controllers
 		}
 
 
-		[Route("zzFullTestPage")]
+        [Authorize]
+        [Route("zzFullTestPage")]
         public IActionResult zzFullTestPage()
         {
             return View();

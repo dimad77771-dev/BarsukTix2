@@ -3,6 +3,7 @@ using BarsukTix.Data;
 using BarsukTix.Services.Implementations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using BarsukTix.Web.Areas.Identity.Data;
 
 namespace BarsukTix
 {
@@ -33,6 +34,7 @@ namespace BarsukTix
                });
 
 			builder.Services.AddTransient<TicketService, TicketService>();
+            builder.Services.AddTransient<Microsoft.AspNetCore.Identity.UI.Services.IEmailSender, EmailSender>();
 
             BarsukTixSettings.ConnectionString = configuration.GetConnectionString("DefaultConnection");
 			BarsukTixSettings.HelcimToken = configuration.GetSection("Helcim")?["Token"];
