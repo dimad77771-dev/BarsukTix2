@@ -16,7 +16,7 @@ namespace BarsukTix.Services.Implementations
     {
         async Task IEmailSender.SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            var file = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            var file = DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".html";
             var path = Path.Combine(@"C:\Tmp\_______emails", file);
             var text = email + "\n\n" + subject + "\n\n" + htmlMessage;
             File.WriteAllText(path, text);

@@ -180,7 +180,7 @@ namespace BarsukTix.Services.Implementations
                 {
                     var result = GetTicketViewModel(userId, db);
                     result.TicketCategories.ForEach(x => x.Quantity = newTicketCategories?.SingleOrDefault(z => z.CategoryRowId == x.CategoryRowId)?.Quantity ?? 0);
-                    result.ErrorText = "The total must be greater than zero";
+                    result.ErrorText = "You must select at least one ticket";
                     return result;
                 }
             }
