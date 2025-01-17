@@ -2,3 +2,31 @@ label.required:after {
 	content: " * ";
 	color: red;
 }
+
+.zm-login-methods__title {
+	position: relative;
+	text-align: center;
+	margin-top: 12px;
+	margin-bottom: 24px
+}
+
+	.zm-login-methods__title:before {
+		content: "";
+		height: 1px;
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: 12px;
+		background-color: #ededf4
+	}
+
+	.zm-login-methods__title span {
+		background-color: #fff;
+		padding-left: 12px;
+		padding-right: 12px;
+		display: inline-block;
+		line-height: 24px;
+		position: relative;
+		z-index: 1;
+		color: #747487
+	}
